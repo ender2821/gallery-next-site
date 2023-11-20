@@ -22,9 +22,30 @@ export default defineType({
       ]
     }),
     defineField({
-      name: "footerText",
-      title: "Footer Text",
+      name: "businessName",
+      title: "Business Name",
       type: "string"
+    }),
+    defineField({
+      name: "name",
+      title: "Name",
+      type: "string"
+    }),
+    defineField({
+      name: "email",
+      title: "Email",
+      type: "string",
+      validation: Rule => Rule.email(),
+    }),
+    defineField({
+      name: "phone",
+      title: "Phone",
+      type: "number",
+    }),
+    defineField({
+      name: "address",
+      title: "Address",
+      type: "string",
     }),
   ]
 });

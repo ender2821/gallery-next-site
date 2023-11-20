@@ -2,14 +2,14 @@ import { StructureBuilder } from "sanity/desk";
 
 export const myStructure = (S:StructureBuilder) =>
   S.list()
-    .title('Base')
+    .title('Site')
     .items([
       S.listItem()
         .title('Home Page')
         .child(
           S.document()
             .schemaType('home')
-            .title('Home Page')
+            .title('Products Page')
             .documentId('home')),
             
       S.listItem()
@@ -20,7 +20,6 @@ export const myStructure = (S:StructureBuilder) =>
             .title('Products Page')
             .documentId('products')),
 
-
       S.listItem()
         .title('Global')
         .child(
@@ -28,6 +27,7 @@ export const myStructure = (S:StructureBuilder) =>
             .schemaType('page')
             .title('Global')
             .documentId('page')),
-            ...S.documentTypeListItems().filter(listItem => !['page', 'home', 'products'].includes(listItem.getId() as string)) 
-  
-          ])
+      S.divider(),
+      ...S.documentTypeListItems().filter(listItem => !['page', 'home', 'products'].includes(listItem.getId() as string)),
+
+    ])
