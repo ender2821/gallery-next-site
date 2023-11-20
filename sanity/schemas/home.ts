@@ -51,17 +51,44 @@ export default defineType({
       type: "string"
     }),
     defineField({
-        name: "products",
+        name: "productList",
         title: "Home Gallery Products",
         type: "array",
         of: [
           {
-            name: "product",
-            title: "Product",
-            type: "reference",
-            to: [{ type: "product"}]
-          },
-        ]
+            type: 'object',
+            fields: [
+              {
+                name: "product",
+                title: "Product",
+                type: "reference",
+                to: [{ type: "product"}]
+              },
+            ],
+            preview: {
+              select: {
+                title: "product.name",
+                media: "product.image",
+                cost: "product.cost",
+                sold: "product.sold",
+              },
+  
+              prepare({
+                title,
+                subtitle,
+                media,
+                cost,
+                sold
+              }) {
+                return {
+                  title,
+                  subtitle: sold ? 'sold' : `$${cost}`,
+                  media,
+                } 
+              }
+            }
+          }
+        ],
     }),
     defineField({
       name: "homeAlterationsTitle",

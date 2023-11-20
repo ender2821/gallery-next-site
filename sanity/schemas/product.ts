@@ -1,10 +1,15 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "productList",
+  name: "product",
   title: "Product List",
   type: "document",
   fields: [
+    defineField({
+      name: "sold",
+      title: "Is Sold?",
+      type: "boolean"
+    }),
     defineField({
       name: "name",
       title: "Product Name",
@@ -20,20 +25,27 @@ export default defineType({
       }
     }),
     defineField({
-      name: "selectedImage",
-      title: "Selected Image",
+      name: "image",
+      title: "Product Main Image",
       type: "image",
       options: {
         hotspot: true,
-      }
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Caption',
+        },
+      ]
     }),
     defineField({
       name: "productImages",
-      title: "Product Images",
+      title: "Other Product Images",
       type: "array",
       of: [
         defineField({
-          name: "productImage",
+          name: "image",
           title: "Product Image",
           type: "image",
           options: {
@@ -66,5 +78,17 @@ export default defineType({
       type: "string",
       initialValue: "You will be contacted via email with payment information",
     }),
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      sold: 'sold',
+    },
+    prepare(selection) {
+      const {title, sold} = selection
+      return {
+        title: sold ? `${title} (Sold)` : title,
+      }
+    }
+  }
 })

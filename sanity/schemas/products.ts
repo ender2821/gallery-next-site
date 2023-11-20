@@ -10,5 +10,11 @@ export default defineType({
       title: "Product Page Title",
       type: "string"
     }),
+    defineField({
+      name: "mainProduct",
+      title: "Main Product",
+      type: "reference",
+      to: [{ type: "product"}]
+    }),
   ]
 });
