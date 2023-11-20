@@ -83,11 +83,13 @@ export default defineType({
     select: {
       title: 'name',
       sold: 'sold',
+      media: 'image',
     },
     prepare(selection) {
-      const {title, sold} = selection
+      const {title, sold, media} = selection
       return {
         title: sold ? `${title} (Sold)` : title,
+        media
       }
     }
   }
