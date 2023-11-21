@@ -1,10 +1,12 @@
-import Image from 'next/image'
-import styles from './page.module.scss'
+import Image from "next/image";
+import styles from "./home.module.scss";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      Home
+      <section className={styles.hero}>
+        <h1>Home Page</h1>
+      </section>
     </main>
-  )
+  );
 }

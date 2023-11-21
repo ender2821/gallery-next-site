@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Noto_Sans } from "next/font/google";
+import "./globals.scss";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
-import Image from "next/image";
-import urlFor from "./lib/urlFor";
-import styles from "./page.module.scss";
-import Link from "next/link";
+import styles from "./home.module.scss";
+import NavDrawer from "./components/NavDrawer";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSans = Noto_Sans({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -34,46 +32,21 @@ export default async function RootLayout({
 }) {
   const data = await client.fetch(query);
   const { phone, logo, name, email, address, businessName } = data as Global;
-  console.log(logo);
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div>
-          <nav>
-            {logo && (
-              <Link href="/" className={styles.logoContain}>
-                <Image src={urlFor(logo?.asset).url()} alt={logo?.alt} fill />
-              </Link>
-            )}
-            <ul>
-              <li>
-                <Link href={"/"}>Home</Link>
-              </li>
-              <li>
-                <Link href={"/custom"}>Custom Garments</Link>
-              </li>
-              <li>
-                <Link href={"/products"}>Products</Link>
-              </li>
-              <li>
-                <Link href={"/alterations"}>Alterations</Link>
-              </li>
-              <li>
-                <Link href={"/lessons"}>Sewing Lessons</Link>
-              </li>
-              <li>
-                <Link href={"/contact"}>Contact</Link>
-              </li>
-            </ul>
-          </nav>
-          {children}
-          <footer>
-            <p>
-              {name && name} | {email && email} | {phone && phone} |{" "}
-              {address && address} |{" "}
-              {businessName && `©${businessName}, all rights reserved.`}
-            </p>
-          </footer>
+      <body className={notoSans.className}>
+        <div className={styles.container}>
+          <NavDrawer logo={logo} />
+          <div className={styles.content}>
+            {children}
+            <footer className={styles.footer}>
+              <p>
+                {name && name} | {email && email} | {phone && phone} |{" "}
+                {address && address} |{" "}
+                {businessName && `©${businessName}, all rights reserved.`}
+              </p>
+            </footer>
+          </div>
         </div>
       </body>
     </html>

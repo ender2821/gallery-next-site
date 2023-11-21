@@ -1,10 +1,10 @@
 type Global = {
-  phone: number, 
+  phone?: number, 
   logo: Image, 
-  name: string, 
-  email: string, 
-  address: string, 
-  businessName: string,
+  name?: string, 
+  email?: string, 
+  address?: string, 
+  businessName?: string,
 }
 
 type Image = {

@@ -1,0 +1,44 @@
+@import '../vars.scss';
+
+.logoContain {
+  display: block;
+  height: 150px;
+  position: relative;
+  margin: 0 auto;
+  width: 150px;
+}
+
+.nav {
+  ul {
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    font-weight: 600;
+    padding: 1rem 0;
+  }
+}
+
+.hamburgerMenu {
+  display: block;
+}
+
+.navDesktop {
+  display: none;
+}
+
+@media screen and (min-width: $size-desktop) {
+  .nav {
+    border-right: 1px solid $border;
+    height: 100vh;  
+  }
+
+  .hamburgerMenu {
+    display: none;
+  }
+
+  .navDesktop {
+    display: block;
+  }
+}

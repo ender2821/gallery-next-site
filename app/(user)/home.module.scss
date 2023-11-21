@@ -1,0 +1,25 @@
+
+@import './vars.scss';
+
+.container {
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.content {
+
+}
+
+.main {
+
+}
+
+@media screen and (min-width:$size-desktop) {
+  .container {
+    grid-template-columns: 300px 1fr
+  }
+}
