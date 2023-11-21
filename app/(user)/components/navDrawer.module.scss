@@ -19,6 +19,21 @@
   }
 }
 
+.activeLink {
+  position: relative;
+  &::before {
+    display: block;
+    content: '';
+    height: 1px;
+    background: $border;
+    width: 50%;
+    bottom: 2.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+  }
+}
+
 .hamburgerMenu {
   display: block;
   position: absolute;
@@ -48,6 +63,17 @@
       padding: 1rem 0;
     }
   }
+
+  .activeLink {
+    &::before {
+      content: '';
+      bottom: 1.4rem;
+      width: 120%;
+      left: -2rem;
+      transform: translateX(0);
+    }
+  }
+  
 
   .hamburgerMenu {
     display: none;

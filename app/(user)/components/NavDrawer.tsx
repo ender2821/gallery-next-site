@@ -7,21 +7,14 @@ import urlFor from "../lib/urlFor";
 import Image from "next/image";
 import { Drawer, IconButton } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 function NavDrawer(props: Global) {
   const { logo } = props;
-  const router = useRouter();
-
+  const pathname = usePathname();
   const [state, setState] = React.useState({
     left: false,
   });
-
-  useEffect(() => {
-    if ({ state: true }) {
-      setState({ left: false });
-    }
-  }, [router.refresh]);
 
   const toggleDrawer =
     (anchor: string, open: boolean) =>
@@ -42,22 +35,52 @@ function NavDrawer(props: Global) {
     return (
       <ul className={styles.navList}>
         <li>
-          <Link href={"/"}>Home</Link>
+          <Link
+            href={"/"}
+            className={pathname === "/" ? styles.activeLink : ""}
+          >
+            Home
+          </Link>
         </li>
         <li>
-          <Link href={"/custom"}>Custom Garments</Link>
+          <Link
+            href={"/custom"}
+            className={pathname === "/custom" ? styles.activeLink : ""}
+          >
+            Custom Garments
+          </Link>
         </li>
         <li>
-          <Link href={"/products"}>Products</Link>
+          <Link
+            href={"/products"}
+            className={pathname === "/products" ? styles.activeLink : ""}
+          >
+            Products
+          </Link>
         </li>
         <li>
-          <Link href={"/alterations"}>Alterations</Link>
+          <Link
+            href={"/alterations"}
+            className={pathname === "/alterations" ? styles.activeLink : ""}
+          >
+            Alterations
+          </Link>
         </li>
         <li>
-          <Link href={"/lessons"}>Sewing Lessons</Link>
+          <Link
+            href={"/lessons"}
+            className={pathname === "/lessons" ? styles.activeLink : ""}
+          >
+            Sewing Lessons
+          </Link>
         </li>
         <li>
-          <Link href={"/contact"}>Contact</Link>
+          <Link
+            href={"/contact"}
+            className={pathname === "/contact" ? styles.activeLink : ""}
+          >
+            Contact
+          </Link>
         </li>
       </ul>
     );
