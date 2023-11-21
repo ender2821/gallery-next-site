@@ -1,21 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./navDrawer.module.scss";
 import Link from "next/link";
 import urlFor from "../lib/urlFor";
 import Image from "next/image";
-import { Button, Drawer } from "@mui/material";
+import { Drawer, IconButton } from "@mui/material";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import { useRouter } from "next/navigation";
 
 function NavDrawer(props: Global) {
   const { logo } = props;
+  const router = useRouter();
 
   const [state, setState] = React.useState({
-    top: false,
     left: false,
-    bottom: false,
-    right: false,
   });
+
+  useEffect(() => {
+    if ({ state: true }) {
+      setState({ left: false });
+    }
+  }, [router.refresh]);
 
   const toggleDrawer =
     (anchor: string, open: boolean) =>
@@ -32,9 +38,9 @@ function NavDrawer(props: Global) {
       setState({ ...state, [anchor]: open });
     };
 
-  const nav = () => {
+  const Nav = () => {
     return (
-      <>
+      <ul className={styles.navList}>
         <li>
           <Link href={"/"}>Home</Link>
         </li>
@@ -53,7 +59,7 @@ function NavDrawer(props: Global) {
         <li>
           <Link href={"/contact"}>Contact</Link>
         </li>
-      </>
+      </ul>
     );
   };
 
@@ -64,22 +70,35 @@ function NavDrawer(props: Global) {
           <Image src={urlFor(logo?.asset).url()} alt={logo?.alt} fill />
         </Link>
       )}
-      <ul className={styles.navDesktop}>{nav()}</ul>
+      <div className={styles.navDesktop}>
+        <Nav />
+      </div>
       <div>
         {(["left"] as const).map((anchor) => (
           <React.Fragment key={anchor}>
-            <Button
+            <IconButton
               onClick={toggleDrawer(anchor, true)}
               className={styles.hamburgerMenu}
+              aria-label="menu"
             >
-              Menu
-            </Button>
+              <MenuRoundedIcon className={styles.icon} />
+            </IconButton>
             <Drawer
               anchor={anchor}
               open={state[anchor]}
               onClose={toggleDrawer(anchor, false)}
+              variant="temporary"
+              PaperProps={{
+                sx: { width: "80%" },
+                onClick: toggleDrawer(anchor, false),
+              }}
+              ModalProps={{
+                keepMounted: false,
+              }}
             >
-              <ul>{nav()}</ul>
+              <div>
+                <Nav />
+              </div>
             </Drawer>
           </React.Fragment>
         ))}
