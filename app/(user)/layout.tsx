@@ -6,6 +6,7 @@ import { groq } from "next-sanity";
 import styles from "./home.module.scss";
 import NavDrawer from "./components/NavDrawer";
 import Head from "next/head";
+import Link from "next/link";
 
 const notoSans = Noto_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -52,9 +53,20 @@ export default async function RootLayout({
               {children}
               <footer className={styles.footer}>
                 <p>
-                  {name && name} | {email && email} | {phone && phone} |{" "}
-                  {address && address} |{" "}
-                  {businessName && `©${businessName}, all rights reserved.`}
+                  {name && name} |{" "}
+                  {email && <Link href={`mailto:${email}`}>{email}</Link>} |{" "}
+                  {phone && <Link href={`tel:${phone}`}>{phone}</Link>} |{" "}
+                  {address && (
+                    <Link
+                      href={`http://maps.google.com/maps?q=${encodeURIComponent(
+                        address
+                      )}`}
+                      target="_blank"
+                    >
+                      {address}
+                    </Link>
+                  )}{" "}
+                  | {businessName && `©${businessName}, all rights reserved.`}
                 </p>
               </footer>
             </div>
