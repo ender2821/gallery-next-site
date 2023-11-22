@@ -3,6 +3,7 @@
 
 .container {
   width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -10,10 +11,6 @@
 
 .main {
   padding: 0 2rem;
-}
-
-.widthContainer {
-  max-width: 1300px;
 }
 
 // Start Hero Styles
@@ -183,11 +180,6 @@
   
   .main {
     padding: 0;
-  }
-
-  .content {
-    height: 100vh;
-    overflow: auto;
   }
 
   .container {

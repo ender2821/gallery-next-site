@@ -2,7 +2,12 @@
 
 .nav {
   border-bottom: 1px solid $border;
+  background: $background;
   padding: 0 2rem;
+  position:-webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
 .logoContain {
@@ -60,9 +65,8 @@
     display: block;
     border-right: 1px solid $border;
     border-bottom: none;
-    height: 100vh;  
-    position: relative;
     z-index: 3;
+    height: 100vh;
     &::before {
       content: '';
       display: block;

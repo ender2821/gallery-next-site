@@ -49,16 +49,14 @@ export default async function RootLayout({
           <div className={styles.container}>
             <NavDrawer logo={logo} />
             <div className={styles.content}>
-              <div className={styles.widthContainer}>
-                {children}
-                <footer className={styles.footer}>
-                  <p>
-                    {name && name} | {email && email} | {phone && phone} |{" "}
-                    {address && address} |{" "}
-                    {businessName && `©${businessName}, all rights reserved.`}
-                  </p>
-                </footer>
-              </div>
+              {children}
+              <footer className={styles.footer}>
+                <p>
+                  {name && name} | {email && email} | {phone && phone} |{" "}
+                  {address && address} |{" "}
+                  {businessName && `©${businessName}, all rights reserved.`}
+                </p>
+              </footer>
             </div>
           </div>
         </body>
