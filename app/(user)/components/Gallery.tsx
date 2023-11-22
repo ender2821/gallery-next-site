@@ -10,31 +10,35 @@ type Gallery = {
 
 export default function Gallery(props: Gallery) {
   const { data } = props;
+
   return (
     <div className={styles.gallery}>
-      <ImageList variant="masonry" cols={2} gap={8}>
-        {data.map((item, i) => (
-          <Link
-            href={`/products/${item?.product?.slug?.current}`}
-            key={item?.product?.name + i}
-          >
-            <ImageListItem>
-              <img
-                src={`${urlFor(
-                  item?.product?.image?.asset
-                ).url()}?w=248&fit=crop&auto=format`}
-                alt={item?.product?.image?.alt}
-                loading="lazy"
-              />
-              <ImageListItemBar
-                position="bottom"
-                subtitle={item?.product?.cost}
-                title={item?.product?.name}
-              />
-            </ImageListItem>
-          </Link>
-        ))}
-      </ImageList>
+      {data.length > 0 && (
+        <ImageList variant="masonry" cols={2} gap={8}>
+          {data.map((item, i) => (
+            <Link
+              href={`/products/${item?.product?.slug?.current}`}
+              key={item?.product?.name + i}
+              className={styles.link}
+            >
+              <ImageListItem>
+                <img
+                  src={`${urlFor(
+                    item?.product?.image?.asset
+                  ).url()}?w=248&fit=crop&auto=format`}
+                  alt={item?.product?.image?.alt}
+                  loading="lazy"
+                />
+                <ImageListItemBar
+                  position="bottom"
+                  subtitle={`$${item?.product?.cost}`}
+                  title={item?.product?.name}
+                />
+              </ImageListItem>
+            </Link>
+          ))}
+        </ImageList>
+      )}
     </div>
   );
 }

@@ -1,10 +1,15 @@
 
-$size-desktop: 1024px;
+$size-desktop: 1200px;
 $size-tablet: 768px;
 
 $white: #ffffff;
+$lightGray: #D9D9D9;
+$darkGray: #6D6D6D;
+$black: #000000;
 
 $background: $white;
-$buttonBackground: #000000;
+$buttonBackground: $black;
 $buttonText: $white;
 $border: #D9D9D9;
+$text: $black;
+$iconBg: $darkGray;

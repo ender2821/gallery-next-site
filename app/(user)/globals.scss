@@ -38,3 +38,44 @@ a {
     color-scheme: dark;
   }
 }
+
+
+// All Mui Component style overides
+.MuiImageList-root {
+  overflow:visible;
+}
+
+.MuiImageListItemBar-titleWrap {
+  background: rgba(255, 255, 255, 0.8);
+  color: $text;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  height: 40px;
+}
+
+.MuiImageListItemBar-title {
+  order: 2;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding-left: 1rem;
+}
+
+.MuiImageListItemBar-subtitle {
+  font-family: 'Noto Sans Display', serif;
+  order: 1;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 2vw, 3.4rem);
+  padding: 0 1rem;
+  border-right: 1px solid #fff;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+@media screen and (min-width:$size-desktop) {
+  .MuiImageListItemBar-titleWrap {
+    height: 60px;
+  }
+}

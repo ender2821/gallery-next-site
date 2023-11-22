@@ -7,6 +7,8 @@ import urlFor from "./lib/urlFor";
 import Button from "./components/Button";
 import PatchIllustration from "./assets/patchIllustration.svg";
 import Gallery from "./components/Gallery";
+import CollectionsIcon from "@mui/icons-material/Collections";
+import Divider from "./components/Divider";
 
 const notoSerif = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -44,9 +46,6 @@ export default async function Home() {
   const data = (await client.fetch(homeQuery, {
     next: { revalidate },
   })) as Home;
-
-  console.log(data?.productList[0].product.image, "data");
-  console.log(data?.heroImage, "heroImage");
 
   return (
     <main className={styles.main}>
@@ -93,16 +92,30 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
+      <Divider />
       <section className={styles.gallery}>
         <div className={styles.galleryContent}>
-          <h2>{data?.homeGalleryTitle && data?.homeGalleryTitle}</h2>
+          <span className={styles.icon}>
+            <CollectionsIcon />
+          </span>
+          <h2 className={notoSerif.className}>
+            {data?.homeGalleryTitle && data?.homeGalleryTitle}
+          </h2>
           <p>{data?.homeGalleryText && data?.homeGalleryText}</p>
+          <Button
+            text={
+              data?.homeGalleryButtonTitle
+                ? data?.homeGalleryButtonTitle
+                : "Button Text"
+            }
+            link={"/"}
+          />
         </div>
         <div className={styles.galleryItems}>
           {data?.productList && <Gallery data={data?.productList} />}
         </div>
       </section>
+      <Divider />
     </main>
   );
 }

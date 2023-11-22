@@ -1,7 +1,8 @@
 @import '../vars.scss';
 
 .nav {
-  border-bottom: 1px solid $border
+  border-bottom: 1px solid $border;
+  padding: 0 2rem;
 }
 
 .logoContain {

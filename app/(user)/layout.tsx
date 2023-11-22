@@ -5,6 +5,7 @@ import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import styles from "./home.module.scss";
 import NavDrawer from "./components/NavDrawer";
+import Head from "next/head";
 
 const notoSans = Noto_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -36,22 +37,32 @@ export default async function RootLayout({
   });
   const { phone, logo, name, email, address, businessName } = data as Global;
   return (
-    <html lang="en">
-      <body className={notoSans.className}>
-        <div className={styles.container}>
-          <NavDrawer logo={logo} />
-          <div className={styles.content}>
-            {children}
-            <footer className={styles.footer}>
-              <p>
-                {name && name} | {email && email} | {phone && phone} |{" "}
-                {address && address} |{" "}
-                {businessName && `©${businessName}, all rights reserved.`}
-              </p>
-            </footer>
+    <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:&display=optional"
+        />
+      </Head>
+      <html lang="en">
+        <body className={notoSans.className}>
+          <div className={styles.container}>
+            <NavDrawer logo={logo} />
+            <div className={styles.content}>
+              <div className={styles.widthContainer}>
+                {children}
+                <footer className={styles.footer}>
+                  <p>
+                    {name && name} | {email && email} | {phone && phone} |{" "}
+                    {address && address} |{" "}
+                    {businessName && `©${businessName}, all rights reserved.`}
+                  </p>
+                </footer>
+              </div>
+            </div>
           </div>
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>
+    </>
   );
 }
