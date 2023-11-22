@@ -66,7 +66,7 @@ export default async function RootLayout({
                       {address}
                     </Link>
                   )}{" "}
-                  | {businessName && `©${businessName}, all rights reserved.`}
+                  | {businessName && `© ${businessName}, all rights reserved.`}
                 </p>
               </footer>
             </div>

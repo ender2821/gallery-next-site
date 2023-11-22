@@ -188,7 +188,12 @@
 }
 
 @media screen and (min-width:$size-desktop) {
-  
+  .hero {
+    h1 {
+      padding-right: 10rem;
+    }
+  } 
+
   .main {
     padding: 0;
   }
