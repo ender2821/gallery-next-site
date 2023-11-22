@@ -1,5 +1,9 @@
 @import '../vars.scss';
 
+.nav {
+  border-bottom: 1px solid $border
+}
+
 .logoContain {
   display: block;
   position: relative;
@@ -37,7 +41,7 @@
 .hamburgerMenu {
   display: block;
   position: absolute;
-  top: 1rem;
+  top: 1.8rem;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -54,20 +58,34 @@
   .nav {
     display: block;
     border-right: 1px solid $border;
+    border-bottom: none;
     height: 100vh;  
+    position: relative;
+    z-index: 3;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 1px;
+      height: calc(100% - 2rem);
+      background: $border;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
   .navList {
     a {
       text-align: left;
-      padding: 1rem 0;
+      padding: 2rem 0;
     }
   }
 
   .activeLink {
     &::before {
       content: '';
-      bottom: 1.4rem;
+      bottom: 2.4rem;
       width: 120%;
       left: -2rem;
       transform: translateX(0);

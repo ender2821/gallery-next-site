@@ -30,7 +30,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const data = await client.fetch(query);
+  const revalidate = 60;
+  const data = await client.fetch(query, {
+    next: { revalidate },
+  });
   const { phone, logo, name, email, address, businessName } = data as Global;
   return (
     <html lang="en">
