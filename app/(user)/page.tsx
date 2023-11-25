@@ -8,6 +8,8 @@ import Button from "./components/Button";
 import PatchIllustration from "./assets/patchIllustration.svg";
 import Gallery from "./components/Gallery";
 import CollectionsIcon from "@mui/icons-material/Collections";
+import ContentCutIcon from "@mui/icons-material/ContentCut";
+import DryCleaningIcon from "@mui/icons-material/DryCleaning";
 import Divider from "./components/Divider";
 
 const notoSerif = Noto_Serif_Display({ subsets: ["latin"] });
@@ -108,7 +110,7 @@ export default async function Home() {
                 ? data?.homeGalleryButtonTitle
                 : "Button Text"
             }
-            link={"/"}
+            link={"/gallery"}
           />
         </div>
         <div className={styles.galleryItems}>
@@ -116,6 +118,74 @@ export default async function Home() {
         </div>
       </section>
       <Divider />
+      <section className={styles.serviceCards}>
+        <div className={styles.card}>
+          <div className={styles.cardBackgroundContain}>
+            {data?.homeAlterationsBackground && (
+              <Image
+                alt={data?.homeAlterationsTitle && data?.homeAlterationsTitle}
+                src={urlFor(data?.homeAlterationsBackground?.asset).url()}
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  opacity: "0.1",
+                }}
+                fill
+              />
+            )}
+          </div>
+          <div className={styles.cardContent}>
+            <span className={styles.icon}>
+              <ContentCutIcon />
+            </span>
+            <h2 className={notoSerif.className}>
+              {data?.homeAlterationsTitle && data?.homeAlterationsTitle}
+            </h2>
+            <p>{data?.homeAlterationsText && data?.homeAlterationsText}</p>
+            <Button
+              text={
+                data?.homeAlterationsButtonTitle
+                  ? data?.homeAlterationsButtonTitle
+                  : "Button Text"
+              }
+              link={"/alterations"}
+            />
+          </div>
+        </div>
+        <div className={styles.card}>
+          <div className={styles.cardBackgroundContain}>
+            {data?.homeLessonsBackground && (
+              <Image
+                alt={data?.homeLessonsTitle && data?.homeLessonsTitle}
+                src={urlFor(data?.homeLessonsBackground?.asset).url()}
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  opacity: "0.1",
+                }}
+                fill
+              />
+            )}
+          </div>
+          <div className={styles.cardContent}>
+            <span className={styles.icon}>
+              <DryCleaningIcon />
+            </span>
+            <h2 className={notoSerif.className}>
+              {data?.homeLessonsTitle && data?.homeLessonsTitle}
+            </h2>
+            <p>{data?.homeLessonsText && data?.homeLessonsText}</p>
+            <Button
+              text={
+                data?.homeLessonsButtonTitle
+                  ? data?.homeLessonsButtonTitle
+                  : "Button Text"
+              }
+              link={"/lessons"}
+            />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
