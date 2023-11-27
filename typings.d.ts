@@ -41,3 +41,10 @@ type Home = {
   heroText: string,
   productList: any[],
 }
+
+type Products = {
+  productPageTitle: string,
+  mainProduct: any,
+  galleryTitle: string,
+  galleryText: string,
+}

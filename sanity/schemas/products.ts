@@ -16,5 +16,15 @@ export default defineType({
       type: "reference",
       to: [{ type: "product"}]
     }),
+    defineField({
+      name: "galleryTitle",
+      title: "Gallery Title",
+      type: "string"
+    }),
+    defineField({
+      name: "galleryText",
+      title: "Gallery Text",
+      type: "text"
+    }),
   ],
 });

@@ -46,8 +46,12 @@ const homeQuery = groq`
 export default async function Home() {
   const revalidate = 60;
   const data = (await client.fetch(homeQuery, {
-    next: { revalidate },
+    next: revalidate,
   })) as Home;
+
+  const updatedData = data?.productList.map((item) => item.product);
+
+  data.productList = updatedData;
 
   return (
     <main className={styles.main}>
@@ -114,7 +118,9 @@ export default async function Home() {
           />
         </div>
         <div className={styles.galleryItems}>
-          {data?.productList && <Gallery data={data?.productList} />}
+          {data?.productList && (
+            <Gallery data={data?.productList} columns={2} />
+          )}
         </div>
       </section>
       <Divider />

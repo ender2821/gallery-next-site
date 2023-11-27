@@ -6,33 +6,34 @@ import Link from "next/link";
 
 type Gallery = {
   data: Product[];
+  columns: number;
 };
 
 export default function Gallery(props: Gallery) {
-  const { data } = props;
+  const { data, columns } = props;
 
   return (
     <div className={styles.gallery}>
       {data.length > 0 && (
-        <ImageList variant="masonry" cols={2} gap={8}>
+        <ImageList variant="masonry" cols={columns} gap={8}>
           {data.map((item, i) => (
             <Link
-              href={`/products/${item?.product?.slug?.current}`}
-              key={item?.product?.name + i}
+              href={`/products/${item?.slug?.current}`}
+              key={item?.name + i}
               className={styles.link}
             >
               <ImageListItem>
                 <img
                   src={`${urlFor(
-                    item?.product?.image?.asset
+                    item?.image?.asset
                   ).url()}?w=248&fit=crop&auto=format`}
-                  alt={item?.product?.image?.alt}
+                  alt={item?.image?.alt}
                   loading="lazy"
                 />
                 <ImageListItemBar
                   position="bottom"
-                  subtitle={`$${item?.product?.cost}`}
-                  title={item?.product?.name}
+                  subtitle={`$${item?.cost}`}
+                  title={item?.name}
                 />
               </ImageListItem>
             </Link>

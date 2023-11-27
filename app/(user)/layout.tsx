@@ -34,7 +34,7 @@ export default async function RootLayout({
 }) {
   const revalidate = 60;
   const data = await client.fetch(query, {
-    next: { revalidate },
+    next: revalidate,
   });
   const { phone, logo, name, email, address, businessName } = data as Global;
   return (

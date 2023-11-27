@@ -1,0 +1,13 @@
+@import "../vars.scss";
+
+.galleryItems {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: $size-tablet) {
+  .galleryItems {
+    grid-template-columns: 1fr 270px;
+  }
+}

@@ -8,7 +8,14 @@ export default defineType({
     defineField({
       name: "sold",
       title: "Is Sold?",
-      type: "boolean"
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
+      name: "customOrder",
+      title: "Custom Order?",
+      type: "boolean",
+      initialValue: false,
     }),
     defineField({
       name: "name",
