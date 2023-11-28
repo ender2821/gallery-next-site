@@ -56,7 +56,7 @@ export default async function Products() {
             </h1>
           )}
           <div className={styles.contentContain}>
-            {pageData?.mainProduct?.cost && (
+            {pageData?.mainProduct && (
               <p className={notoSerifDisplay.className}>
                 {pageData?.mainProduct?.sold
                   ? "Sold"
@@ -72,19 +72,21 @@ export default async function Products() {
                   value={pageData?.mainProduct?.productDescription[0]}
                 />
               )}
-              <Button
-                text={
-                  pageData?.mainProductButtonText
-                    ? pageData?.mainProductButtonText
-                    : "Button Text"
-                }
-                link={`/products/${pageData?.mainProduct?.slug?.current}`}
-              />
+              {pageData?.mainProduct && (
+                <Button
+                  text={
+                    pageData?.mainProductButtonText
+                      ? pageData?.mainProductButtonText
+                      : "Button Text"
+                  }
+                  link={`/products/${pageData?.mainProduct?.slug?.current}`}
+                />
+              )}
             </div>
           </div>
         </div>
-        <div className={styles.showcaseImage}>
-          {pageData?.mainProduct && (
+        {pageData?.mainProduct && (
+          <div className={styles.showcaseImage}>
             <Image
               src={urlFor(pageData?.mainProduct?.image?.asset).url()}
               alt={pageData?.mainProduct?.name}
@@ -94,8 +96,8 @@ export default async function Products() {
               }}
               fill
             />
-          )}
-        </div>
+          </div>
+        )}
       </section>
       <Divider />
       <section className={styles.galleryItems}>
