@@ -48,3 +48,15 @@ type Products = {
   galleryTitle: string,
   galleryText: string,
 }
+
+type Product = {
+  sold?: boolean;
+  customOrder?: boolean;
+  name: string;
+  slug: string;
+  image?: Image;
+  productImages?: Image[];
+  productDescription?: any;
+  cost?: number;
+  purchaseInstructions?: string;
+}

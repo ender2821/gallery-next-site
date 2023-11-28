@@ -9,6 +9,11 @@
   grid-template-columns: 1fr;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .main {
   padding: 0 2rem;
 }
@@ -155,6 +160,7 @@
 .footer {
   padding: 2rem;
   border-top: 1px solid $border;
+  margin-top: auto;
   width: 100%;
 }
 
