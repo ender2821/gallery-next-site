@@ -47,6 +47,7 @@ type Products = {
   mainProduct: any,
   galleryTitle: string,
   galleryText: string,
+  mainProductButtonText: string,
 }
 
 type Product = {

@@ -24,7 +24,8 @@ const pageDataQuery = groq`
       productDescription
     },
     galleryTitle,
-    galleryText
+    galleryText,
+    mainProductButtonText,
   }
 `;
 
@@ -70,7 +71,11 @@ export default async function Products() {
                 />
               )}
               <Button
-                text={"Product Details"}
+                text={
+                  pageData?.mainProductButtonText
+                    ? pageData?.mainProductButtonText
+                    : "Button Text"
+                }
                 link={`/products/${pageData?.mainProduct?.slug?.current}`}
               />
             </div>

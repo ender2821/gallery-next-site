@@ -17,6 +17,11 @@ export default defineType({
       to: [{ type: "product"}]
     }),
     defineField({
+      name: "mainProductButtonText",
+      title: "Main Product Button Text",
+      type: "string"
+    }),
+    defineField({
       name: "galleryTitle",
       title: "Gallery Title",
       type: "string"
