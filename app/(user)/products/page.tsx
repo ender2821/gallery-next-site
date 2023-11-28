@@ -58,7 +58,9 @@ export default async function Products() {
           <div className={styles.contentContain}>
             {pageData?.mainProduct?.cost && (
               <p className={notoSerifDisplay.className}>
-                ${pageData?.mainProduct?.cost}
+                {pageData?.mainProduct?.sold
+                  ? "Sold"
+                  : `$${pageData?.mainProduct?.cost}`}
               </p>
             )}
             <div className={styles.right}>

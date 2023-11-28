@@ -32,7 +32,7 @@ export default function Gallery(props: Gallery) {
                 />
                 <ImageListItemBar
                   position="bottom"
-                  subtitle={`$${item?.cost}`}
+                  subtitle={item?.sold ? "Sold" : `$${item?.cost}`}
                   title={item?.name}
                 />
               </ImageListItem>
