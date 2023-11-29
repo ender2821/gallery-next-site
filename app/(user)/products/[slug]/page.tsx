@@ -1,13 +1,9 @@
-import Image from "next/image";
 import styles from "./product.module.scss";
 import { Noto_Serif_Display } from "next/font/google";
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
-import Gallery from "../../components/Gallery";
 import Divider from "../../components/Divider";
-import urlFor from "../../lib/urlFor";
 import { PortableText } from "@portabletext/react";
-import CollectionsIcon from "@mui/icons-material/Collections";
 import Button from "../../components/Button";
 import ProductImageList from "../../components/ProductImageList";
 import BackButton from "../../components/BackButton";
@@ -51,6 +47,7 @@ export default async function Product({ params: { slug } }: Props) {
               </p>
             )}
           </div>
+          <Divider />
         </div>
         <div>
           <ProductImageList data={productData} />

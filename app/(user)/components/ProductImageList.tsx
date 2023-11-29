@@ -27,7 +27,7 @@ export default function ProductImageList(props: Props) {
   });
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.mainImage}>
         <Image
           src={mainImage?.image}
