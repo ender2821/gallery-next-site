@@ -54,10 +54,14 @@ type Product = {
   sold?: boolean;
   customOrder?: boolean;
   name: string;
-  slug: string;
+  slug: Slug;
   image?: Image;
   productImages?: Image[];
   productDescription?: any;
   cost?: number;
   purchaseInstructions?: string;
+}
+
+type Slug = {
+  current: string;
 }

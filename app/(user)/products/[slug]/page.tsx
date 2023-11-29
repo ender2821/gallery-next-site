@@ -10,6 +10,7 @@ import { PortableText } from "@portabletext/react";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import Button from "../../components/Button";
 import ProductImageList from "../../components/ProductImageList";
+import BackButton from "../../components/BackButton";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -32,22 +33,24 @@ export default async function Product({ params: { slug } }: Props) {
 
   return (
     <>
-      <section className={styles.showcase}>
-        <div className={styles.showcaseContent}>
-          <div className={styles.icon}>
-            <CollectionsIcon />
-          </div>
+      <section className={styles.container}>
+        <div className={styles.content}>
+          <BackButton />
           {productData?.name && (
             <h1 className={notoSerifDisplay.className}>{productData?.name}</h1>
           )}
-          {productData?.productDescription && (
-            <PortableText value={productData?.productDescription} />
-          )}
-          {productData && (
-            <p className={notoSerifDisplay.className}>
-              {productData.sold ? "Sold" : `$${productData.cost}`}
-            </p>
-          )}
+          <div className={styles.contentBody}>
+            {productData?.productDescription && (
+              <PortableText value={productData?.productDescription} />
+            )}
+          </div>
+          <div className={styles.cost}>
+            {productData && (
+              <p className={notoSerifDisplay.className}>
+                {productData.sold ? "Sold" : `$${productData.cost}`}
+              </p>
+            )}
+          </div>
         </div>
         <div>
           <ProductImageList data={productData} />

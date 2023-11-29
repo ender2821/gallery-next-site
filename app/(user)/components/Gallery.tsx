@@ -26,7 +26,7 @@ export default function Gallery(props: Gallery) {
                 <img
                   src={`${urlFor(
                     item?.image?.asset
-                  ).url()}?w=248&fit=crop&auto=format`}
+                  ).url()}?w=400&fit=crop&auto=format`}
                   alt={item?.image?.alt}
                   loading="lazy"
                 />

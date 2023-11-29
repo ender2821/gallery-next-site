@@ -14,8 +14,8 @@ export default function ProductImageList(props: Props) {
 
   const buildArr = (data: Product) => {
     let imageArr = [];
-    imageArr.push(data?.image);
-    imageArr.push(data?.productImages);
+    data?.image && imageArr.push(data?.image);
+    data?.productImages && imageArr.push(data?.productImages);
 
     return imageArr;
   };
@@ -27,44 +27,46 @@ export default function ProductImageList(props: Props) {
   });
 
   return (
-    <>
-      <div className={styles.image}>
+    <div>
+      <div className={styles.mainImage}>
         <Image
           src={mainImage?.image}
           alt={mainImage?.alt ? mainImage?.alt : ""}
-          sizes="(min-width: 50px) 50vw"
+          sizes="(min-width: 50px) 650px"
           style={{
             objectFit: "cover",
           }}
           fill
         />
       </div>
-      <div className={styles.productImageList}>
-        {imageData.map((item, i) => {
-          return (
-            <button
-              onClick={() =>
-                setMainImage({
-                  image: urlFor(item?.asset).url(),
-                  alt: item?.alt,
-                })
-              }
-              className={styles.mainImage}
-              key={i}
-            >
-              <Image
-                src={urlFor(item?.asset).url()}
-                alt={item?.alt ? item?.alt : ""}
-                style={{
-                  objectFit: "cover",
-                }}
-                width={50}
-                height={50}
-              />
-            </button>
-          );
-        })}
-      </div>
-    </>
+      {imageData.length > 1 && (
+        <div className={styles.productImageButtons}>
+          {imageData.map((item, i) => {
+            return (
+              <button
+                onClick={() =>
+                  setMainImage({
+                    image: urlFor(item?.asset).url(),
+                    alt: item?.alt,
+                  })
+                }
+                className={styles.imageButton}
+                key={i}
+              >
+                <Image
+                  src={urlFor(item?.asset).url()}
+                  alt={item?.alt ? item?.alt : ""}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  sizes="(min-width: 50px) 125px"
+                  fill
+                />
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }
