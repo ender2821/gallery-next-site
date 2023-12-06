@@ -1,17 +1,18 @@
 import Link from "next/link";
 import styles from "./button.module.scss";
+import { ButtonHTMLAttributes } from "react";
 
-type Button = {
+interface Button extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   link?: string;
   text: string;
   onClick?: () => void;
-};
+}
 
 export default function Button(props: Button) {
-  const { link, text, onClick } = props;
+  const { link, text, onClick, type } = props;
   return (
     <>
-      {link && (
+      {link ? (
         <Link href={link} className={styles.button}>
           <span className={styles.borderTop} />
           <span className={styles.borderRight} />
@@ -19,9 +20,12 @@ export default function Button(props: Button) {
           <span className={styles.borderLeft} />
           {text ? text : "Button missing label"}
         </Link>
-      )}
-      {onClick && (
-        <button onClick={onClick} className={styles.button}>
+      ) : (
+        <button
+          onClick={onClick}
+          className={styles.button}
+          type={type ? type : "button"}
+        >
           <span className={styles.borderTop} />
           <span className={styles.borderRight} />
           <span className={styles.borderBottom} />

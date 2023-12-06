@@ -3,12 +3,16 @@
 .button {
   display: inline-block;
   color: $buttonText;
+  cursor: pointer;
   border: 1px solid $border;
   background: $buttonBackground;
   position: relative;
   padding: 1rem 2rem;
   transition: background 125ms ease, color 125ms ease;
+  min-width: 200px;
+  letter-spacing: 1px;
   z-index:5;
+  font-family: inherit;
 
   &:hover {
     background-color: #ffffff;

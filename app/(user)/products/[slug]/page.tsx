@@ -7,6 +7,7 @@ import { PortableText } from "@portabletext/react";
 import Button from "../../components/Button";
 import ProductImageList from "../../components/ProductImageList";
 import BackButton from "../../components/BackButton";
+import PurchaseForm from "../../components/PurchaseForm";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -48,6 +49,7 @@ export default async function Product({ params: { slug } }: Props) {
             )}
           </div>
           <Divider />
+          <PurchaseForm data={productData} />
         </div>
         <div>
           <ProductImageList data={productData} />

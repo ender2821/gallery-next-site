@@ -1,0 +1,33 @@
+@import "../vars.scss";
+
+.formContain{
+  position: relative;
+
+  label {
+    position: absolute;
+    left: -9999px;
+    visibilitY: hidden;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid $inputBorder;
+    padding: 1rem 0;
+    width: 100%;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    font-family: inherit;
+
+    &::placeholder {
+      font-weight: 700;
+    }
+  }
+
+  textarea {
+    border: 1px solid $inputBorder;
+    width: 100%;
+    margin-bottom: 2rem;
+    font-family: inherit;
+    padding: 0.5rem;
+  }
+}
