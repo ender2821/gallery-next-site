@@ -33,6 +33,13 @@ export const myStructure = (S:StructureBuilder) =>
           .schemaType('alterations')
           .title('Alterations Page')
           .documentId('alterations')),
+      S.listItem()
+      .title('Sewing Lessons Page')
+      .child(
+        S.document()
+          .schemaType('sewing')
+          .title('Sewing Lessons Page')
+          .documentId('sewing')),
 
       S.listItem()
         .title('Global')
@@ -42,6 +49,6 @@ export const myStructure = (S:StructureBuilder) =>
             .title('Global')
             .documentId('page')),
       S.divider(),
-      ...S.documentTypeListItems().filter(listItem => !['page', 'home', 'products', 'customGarments', 'alterations'].includes(listItem.getId() as string)),
+      ...S.documentTypeListItems().filter(listItem => !['page', 'home', 'products', 'customGarments', 'alterations', 'sewing'].includes(listItem.getId() as string)),
 
     ])

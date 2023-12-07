@@ -78,3 +78,9 @@ type Alterations = {
   pageContent: any;
   image: Image;
 }
+
+type Sewing = {
+  name: string;
+  pageContent: any;
+  image: Image;
+}

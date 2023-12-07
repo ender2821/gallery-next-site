@@ -114,7 +114,7 @@ export default async function Home() {
                 ? data?.homeGalleryButtonTitle
                 : "Button Text"
             }
-            link={"/gallery"}
+            link={"/products"}
           />
         </div>
         <div className={styles.galleryItems}>
@@ -187,7 +187,7 @@ export default async function Home() {
                   ? data?.homeLessonsButtonTitle
                   : "Button Text"
               }
-              link={"/lessons"}
+              link={"/sewing-lessons"}
             />
           </div>
         </div>

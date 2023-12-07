@@ -68,8 +68,8 @@ function NavDrawer(props: Global) {
         </li>
         <li>
           <Link
-            href={"/lessons"}
-            className={pathname === "/lessons" ? styles.activeLink : ""}
+            href={"/sewing-lessons"}
+            className={pathname === "/sewing-lessons" ? styles.activeLink : ""}
           >
             Sewing Lessons
           </Link>
