@@ -13,7 +13,11 @@ export type FormData = {
 };
 
 export default function ContactForm() {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
 
   function onSubmit(formData: FormData) {
     sendEmail(formData);
@@ -23,6 +27,9 @@ export default function ContactForm() {
     <form className={styles.formContain} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.inputContain}>
         <label htmlFor="full name">Full Name</label>
+        {errors.fullName && (
+          <p className={styles.error}>Please check Fullname field</p>
+        )}
         <input
           type="text"
           placeholder="Full Name"
@@ -31,14 +38,26 @@ export default function ContactForm() {
       </div>
       <div className={styles.inputContain}>
         <label htmlFor="email">Email</label>
+        {errors.email && (
+          <p className={styles.error}>Please check Email field</p>
+        )}
         <input
-          type="text"
+          type="email"
           placeholder="Email"
-          {...register("email", { required: true })}
+          {...register("email", {
+            required: true,
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "Entered value does not match email format",
+            },
+          })}
         />
       </div>
       <div className={styles.inputContain}>
         <label htmlFor="message">Message</label>
+        {errors.message && (
+          <p className={styles.error}>Please check Message field</p>
+        )}
         <textarea
           rows={4}
           placeholder="Message"
