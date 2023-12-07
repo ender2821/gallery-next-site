@@ -90,7 +90,7 @@ export default async function Home() {
           <div>
             <Button
               text={data?.heroCta ? data?.heroCta : "CTA Text"}
-              link={"/"}
+              link={"/custom-garments"}
             />
           </div>
           <div className={styles.patchIllustration}>

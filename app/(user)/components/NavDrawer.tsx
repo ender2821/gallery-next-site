@@ -44,8 +44,8 @@ function NavDrawer(props: Global) {
         </li>
         <li>
           <Link
-            href={"/custom"}
-            className={pathname === "/custom" ? styles.activeLink : ""}
+            href={"/custom-garments"}
+            className={pathname === "/custom-garments" ? styles.activeLink : ""}
           >
             Custom Garments
           </Link>

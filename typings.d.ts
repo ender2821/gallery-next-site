@@ -65,3 +65,9 @@ type Product = {
 type Slug = {
   current: string;
 }
+
+type CustomGarments = {
+  name: string;
+  pageContent: any;
+  garmentImages: Image[];
+}
