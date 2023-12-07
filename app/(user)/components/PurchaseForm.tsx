@@ -73,6 +73,9 @@ export default function PurchaseForm(props: PurchaseForm) {
       <div>
         <Button type={"submit"} text={"Submit"} />
       </div>
+      <p className={styles.purchaseInstructions}>
+        {data?.purchaseInstructions}
+      </p>
     </form>
   );
 }

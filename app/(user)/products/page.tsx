@@ -5,7 +5,7 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import Gallery from "../components/Gallery";
 import Divider from "../components/Divider";
-import urlFor from "../lib/urlFor";
+import urlFor from "../../utils/urlFor";
 import { PortableText } from "@portabletext/react";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import Button from "../components/Button";

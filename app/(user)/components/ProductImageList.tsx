@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "./productImageList.module.scss";
-import urlFor from "../lib/urlFor";
+import urlFor from "../../utils/urlFor";
 import Image from "next/image";
 
 type Props = {

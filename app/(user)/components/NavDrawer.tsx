@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import styles from "./navDrawer.module.scss";
 import Link from "next/link";
-import urlFor from "../lib/urlFor";
+import urlFor from "../../utils/urlFor";
 import Image from "next/image";
 import { Drawer, IconButton } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";

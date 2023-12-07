@@ -1,7 +1,7 @@
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import styles from "./gallery.module.scss";
 import Image from "next/image";
-import urlFor from "../lib/urlFor";
+import urlFor from "../../utils/urlFor";
 import Link from "next/link";
 
 type Gallery = {
