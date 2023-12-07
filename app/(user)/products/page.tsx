@@ -10,6 +10,8 @@ import { PortableText } from "@portabletext/react";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import Button from "../components/Button";
 
+export const dynamic = "force-dynamic";
+
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
 const pageDataQuery = groq`

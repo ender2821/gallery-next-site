@@ -9,6 +9,8 @@ import urlFor from "@/app/utils/urlFor";
 import Image from "next/image";
 import Schedule from "../components/Schedule";
 
+export const dynamic = "force-dynamic";
+
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
 const alterationsQuery = groq`

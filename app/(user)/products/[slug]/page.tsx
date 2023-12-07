@@ -10,6 +10,8 @@ import BackButton from "../../components/BackButton";
 import PurchaseForm from "../../components/PurchaseForm";
 import CustomGarmentForm from "../../components/CustomGarmentForm";
 
+export const dynamic = "force-dynamic";
+
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
 type Props = {

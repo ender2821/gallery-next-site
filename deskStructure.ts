@@ -55,6 +55,6 @@ export const myStructure = (S:StructureBuilder) =>
             .title('Global')
             .documentId('page')),
       S.divider(),
-      ...S.documentTypeListItems().filter(listItem => !['page', 'home', 'products', 'customGarments', 'alterations', 'sewing'].includes(listItem.getId() as string)),
+      ...S.documentTypeListItems().filter(listItem => !['page', 'home', 'products', 'customGarments', 'alterations', 'sewing', 'contact'].includes(listItem.getId() as string)),
 
     ])

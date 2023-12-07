@@ -8,6 +8,8 @@ import CollectionsIcon from "@mui/icons-material/Collections";
 import GarmentGallery from "../components/GarmentsGallery";
 import CustomGarmentForm from "../components/CustomGarmentForm";
 
+export const dynamic = "force-dynamic";
+
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
 const customGarmentsQuery = groq`

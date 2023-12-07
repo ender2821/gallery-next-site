@@ -12,6 +12,8 @@ import ContentCutIcon from "@mui/icons-material/ContentCut";
 import DryCleaningIcon from "@mui/icons-material/DryCleaning";
 import Divider from "./components/Divider";
 
+export const dynamic = "force-dynamic";
+
 const notoSerif = Noto_Serif_Display({ subsets: ["latin"] });
 
 const homeQuery = groq`

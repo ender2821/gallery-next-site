@@ -13,6 +13,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Tiktok from "../../assets/tiktok.svg";
 
+export const dynamic = "force-dynamic";
+
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
 const contactQuery = groq`
