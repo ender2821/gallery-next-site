@@ -6,6 +6,7 @@ import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import GarmentGallery from "../components/GarmentsGallery";
+import CustomGarmentForm from "../components/CustomGarmentForm";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -44,6 +45,7 @@ export default async function CustomGarments() {
             )}
           </div>
           <Divider />
+          <CustomGarmentForm />
         </div>
         <div>
           {" "}

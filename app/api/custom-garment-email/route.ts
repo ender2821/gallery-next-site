@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import Mail from 'nodemailer/lib/mailer';
 
 export async function POST(request: NextRequest) {
-  const { email, fullName, shippingAddress, specialInstructions, productName, productPrice } = await request.json();
+  const { email, fullName, message } = await request.json();
 
   const transport = nodemailer.createTransport({
     service: 'gmail',
@@ -26,16 +26,12 @@ export async function POST(request: NextRequest) {
     from: process.env.FORMS_EMAIL,
     to: process.env.FORMS_EMAIL,
     // cc: email, (uncomment this line if you want to send a copy to the sender)
-    subject: `Purchase Request from ${fullName} (${email})`,
-    text: `Fullname: ${fullName} | Email: ${email} | Shipping Address: ${shippingAddress} | Special Instructions: ${specialInstructions} | Product Name: ${productName} | Product Price: $${productPrice}`,
+    subject: `Custom Garment Request from ${fullName} (${email})`,
+    text: `Fullname: ${fullName} | Email: ${email} | Product Name: ${message} `,
     html:`
-    <p>Product Name: ${productName}</p>
-    <p>Product Price: $${productPrice}</p>
-    <hr/>
     <p>Email: ${email}</p>
     <p>Fullname: ${fullName}</p>
-    <p>Shipping Address: ${shippingAddress}</p>
-    <p>Special Instructions: ${specialInstructions}</p>
+    <p>Message: ${message}</p>
     `,
   };
 

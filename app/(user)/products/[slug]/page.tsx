@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 import ProductImageList from "../../components/ProductImageList";
 import BackButton from "../../components/BackButton";
 import PurchaseForm from "../../components/PurchaseForm";
+import CustomGarmentForm from "../../components/CustomGarmentForm";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -49,7 +50,17 @@ export default async function Product({ params: { slug } }: Props) {
             )}
           </div>
           <Divider />
-          <PurchaseForm data={productData} />
+          {productData.sold ? (
+            <>
+              <h3 className={styles.customOrderText}>
+                If you would like to order something similar, please give a
+                detailed description down below.
+              </h3>
+              <CustomGarmentForm />
+            </>
+          ) : (
+            <PurchaseForm data={productData} />
+          )}
         </div>
         <div>
           <ProductImageList data={productData} />

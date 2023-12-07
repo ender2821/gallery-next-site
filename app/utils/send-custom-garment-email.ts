@@ -1,7 +1,7 @@
-import { FormData } from "../(user)/components/PurchaseForm";
+import { FormData } from "../(user)/components/CustomGarmentForm";
 
 export function sendEmail(data: FormData) {
-  const apiEndpoint = '/api/purchase-email';
+  const apiEndpoint = '/api/custom-garment-email';
 
   fetch(apiEndpoint, {
     method: 'POST',

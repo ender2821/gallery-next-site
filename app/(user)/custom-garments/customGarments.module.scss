@@ -27,14 +27,9 @@
 .icon {
   height: 4rem;
   width: 4rem;
-  cursor: pointer;
   background: none;
   border: none;
   transition: background 125ms ease;
-
-  &:hover {
-    background: $border;
-  }
 
   svg {
     width: 100%;
