@@ -72,3 +72,9 @@ type CustomGarments = {
   pageContent: any;
   garmentImages: Image[];
 }
+
+type Alterations = {
+  name: string;
+  pageContent: any;
+  image: Image;
+}

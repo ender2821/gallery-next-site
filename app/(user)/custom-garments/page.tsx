@@ -4,7 +4,7 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
-import ContentCutIcon from "@mui/icons-material/ContentCut";
+import CollectionsIcon from "@mui/icons-material/Collections";
 import GarmentGallery from "../components/GarmentsGallery";
 import CustomGarmentForm from "../components/CustomGarmentForm";
 
@@ -32,7 +32,7 @@ export default async function CustomGarments() {
       <section className={styles.container}>
         <div className={styles.content}>
           <div className={styles.icon}>
-            <ContentCutIcon />
+            <CollectionsIcon />
           </div>
           {customGarmentsData?.name && (
             <h1 className={notoSerifDisplay.className}>
