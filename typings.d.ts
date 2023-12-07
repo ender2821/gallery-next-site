@@ -60,6 +60,7 @@ type Product = {
   productDescription?: any;
   cost?: number;
   purchaseInstructions?: string;
+  orderInstructions?: string;
 }
 
 type Slug = {

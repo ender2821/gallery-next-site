@@ -52,10 +52,11 @@ export default async function Product({ params: { slug } }: Props) {
           <Divider />
           {productData.sold ? (
             <>
-              <h3 className={styles.customOrderText}>
-                If you would like to order something similar, please give a
-                detailed description down below.
-              </h3>
+              {productData?.orderInstructions && (
+                <h3 className={styles.customOrderText}>
+                  {productData?.orderInstructions}
+                </h3>
+              )}
               <CustomGarmentForm />
             </>
           ) : (

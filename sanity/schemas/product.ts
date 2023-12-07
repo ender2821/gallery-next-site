@@ -83,7 +83,13 @@ export default defineType({
       name: "purchaseInstructions",
       title: "Purchase Instructions",
       type: "string",
-      initialValue: "You will be contacted via email with payment information",
+      initialValue: "You will be contacted via email with payment information.",
+    }),
+    defineField({
+      name: "orderInstructions",
+      title: "Order Instructions",
+      type: "string",
+      initialValue: "If you would like to order something similar, please give a detailed description down below.",
     }),
   ],
   preview: {

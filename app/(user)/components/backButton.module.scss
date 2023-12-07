@@ -5,11 +5,11 @@
   width: 4rem;
   cursor: pointer;
   background: none;
-  border: none;
-  transition: background 125ms ease;
+  border: 1px solid transparent;
+  transition: border 125ms ease;
 
   &:hover {
-    background: $border;
+    border: 1px solid $border;
   }
 
   svg {
