@@ -58,7 +58,7 @@ export default async function Alterations() {
                 alterationsData?.image.alt ? alterationsData?.image?.alt : ""
               }
               src={urlFor(alterationsData?.image?.asset).url()}
-              sizes="100vw"
+              sizes="40vw"
               style={{
                 objectFit: "cover",
               }}

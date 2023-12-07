@@ -3,7 +3,7 @@
 import styles from "./forms.module.scss";
 
 import { useForm } from "react-hook-form";
-import { sendEmail } from "@/app/utils/send-custom-garment-email";
+import { sendEmail } from "@/app/utils/send-contact-email";
 import Button from "./Button";
 
 export type FormData = {
@@ -12,7 +12,7 @@ export type FormData = {
   message: string;
 };
 
-export default function CustomGarmentForm() {
+export default function ContactForm() {
   const { register, handleSubmit } = useForm<FormData>();
 
   function onSubmit(formData: FormData) {

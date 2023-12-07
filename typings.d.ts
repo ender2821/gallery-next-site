@@ -84,3 +84,12 @@ type Sewing = {
   pageContent: any;
   image: Image;
 }
+
+type Contact = {
+  name: string;
+  pageContent: any;
+  image: Image;
+  facebook?: string;
+  instagram?: string;
+  tiktok?: string;
+}

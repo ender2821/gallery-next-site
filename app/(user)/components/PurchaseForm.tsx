@@ -27,7 +27,6 @@ export default function PurchaseForm(props: PurchaseForm) {
       productName: data?.name,
       productPrice: data?.cost,
     };
-    // console.log(submittedData);
     sendEmail(submittedData);
   }
 

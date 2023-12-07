@@ -40,7 +40,13 @@ export const myStructure = (S:StructureBuilder) =>
           .schemaType('sewing')
           .title('Sewing Lessons Page')
           .documentId('sewing')),
-
+      S.listItem()
+      .title('Contact Page')
+      .child(
+        S.document()
+          .schemaType('contact')
+          .title('Contact Page')
+          .documentId('contact')),
       S.listItem()
         .title('Global')
         .child(

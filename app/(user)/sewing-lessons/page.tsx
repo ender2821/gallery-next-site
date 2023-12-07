@@ -52,7 +52,7 @@ export default async function Alterations() {
             <Image
               alt={sewingData?.image.alt ? sewingData?.image?.alt : ""}
               src={urlFor(sewingData?.image?.asset).url()}
-              sizes="100vw"
+              sizes="40vw"
               style={{
                 objectFit: "cover",
               }}
