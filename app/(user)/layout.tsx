@@ -7,6 +7,7 @@ import styles from "./home.module.scss";
 import NavDrawer from "./components/NavDrawer";
 import Head from "next/head";
 import Link from "next/link";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 const notoSans = Noto_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -37,6 +38,8 @@ export default async function RootLayout({
     next: revalidate,
   });
   const { phone, logo, name, email, address, businessName } = data as Global;
+
+  const year = new Date().getFullYear();
   return (
     <>
       <Head>
@@ -66,11 +69,14 @@ export default async function RootLayout({
                       {address}
                     </Link>
                   )}{" "}
-                  | {businessName && `© ${businessName}, all rights reserved.`}
+                  |{" "}
+                  {businessName &&
+                    `©${year} ${businessName}, all rights reserved.`}
                 </p>
               </footer>
             </div>
           </div>
+          <GoogleAnalytics />
         </body>
       </html>
     </>
