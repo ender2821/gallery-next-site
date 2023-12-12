@@ -39,12 +39,24 @@ type Home = {
   homeAlterationsBackground: BackgroundImage,
   homeAlterationsButtonTitle: string,
   heroText: string,
-  productList: any[],
+  productList: HomeProduct[],
+}
+
+type HomeProduct = {
+  product: HomeProductDetail
+}
+
+type HomeProductDetail = {
+  sold: boolean,
+  cost: number,
+  image: Image,
+  name: string,
+  slug: Slug,
 }
 
 type Products = {
   productPageTitle: string,
-  mainProduct: any,
+  mainProduct: Block[],
   galleryTitle: string,
   galleryText: string,
   mainProductButtonText: string,
@@ -57,7 +69,7 @@ type Product = {
   slug: Slug;
   image?: Image;
   productImages?: Image[];
-  productDescription?: any;
+  productDescription?: Block[];
   cost?: number;
   purchaseInstructions?: string;
   orderInstructions?: string;
@@ -69,27 +81,35 @@ type Slug = {
 
 type CustomGarments = {
   name: string;
-  pageContent: any;
+  pageContent: Block[];
   garmentImages: Image[];
 }
 
 type Alterations = {
   name: string;
-  pageContent: any;
+  pageContent: Block[];
   image: Image;
 }
 
 type Sewing = {
   name: string;
-  pageContent: any;
+  pageContent: Block[];
   image: Image;
 }
 
 type Contact = {
   name: string;
-  pageContent: any;
+  pageContent: block[];
   image: Image;
   facebook?: string;
   instagram?: string;
   tiktok?: string;
+}
+
+type Block = {
+  _key: string,
+  markDefs: unknown[],
+  children: unknown[],
+  _type: string,
+  style: string,
 }

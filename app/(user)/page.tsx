@@ -51,9 +51,7 @@ export default async function Home() {
     next: revalidate,
   })) as Home;
 
-  const updatedData = data?.productList.map((item) => item.product);
-
-  data.productList = updatedData;
+  const updatedProductData = data?.productList.map((item) => item?.product);
 
   return (
     <main className={styles.main}>
@@ -121,7 +119,7 @@ export default async function Home() {
         </div>
         <div className={styles.galleryItems}>
           {data?.productList && (
-            <Gallery data={data?.productList} columns={2} />
+            <Gallery data={updatedProductData} columns={2} />
           )}
         </div>
       </section>

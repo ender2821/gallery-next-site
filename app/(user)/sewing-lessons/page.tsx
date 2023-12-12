@@ -4,6 +4,8 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
+import { PortableTextBlock } from "@portabletext/types";
+
 import DryCleaningIcon from "@mui/icons-material/DryCleaning";
 import urlFor from "@/app/utils/urlFor";
 import Image from "next/image";
