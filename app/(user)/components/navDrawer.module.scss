@@ -26,11 +26,19 @@
     display: block;
     font-weight: 600;
     text-align: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 .activeLink {
   position: relative;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none !important;
+  }
   &::before {
     display: block;
     content: '';

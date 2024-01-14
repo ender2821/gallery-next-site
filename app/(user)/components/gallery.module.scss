@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 
 .link {
   display: block;
@@ -11,4 +13,79 @@
 .button {
   z-index: 1;
   position: relative;
+}
+
+.buttonBack{
+  background: $white;
+  border: 1px solid transparent;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2rem;
+  width: 4rem;
+  height: 4rem;
+  transition: border 125ms ease;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $border;
+  }
+  svg {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+.buttonForward{
+  background: $white;
+  border: 1px solid transparent;
+  z-index: 1;
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2rem;
+  transition: border 125ms ease;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $border;
+  }
+  svg {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+.buttonClose{
+  background: $white;
+  border: 1px solid transparent;
+  z-index: 1;
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  top: 2rem;
+  right: 2rem;
+  transition: border 125ms ease;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $border;
+  }
+  svg {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+@media screen and (min-width: $size-tablet) {
+  .buttonBack{
+    left: 4rem;
+  }
+  .buttonForward{
+    right: 4rem;
+  }
+  .buttonClose {
+    top: 4rem;
+    right: 4rem;
+  }
 }

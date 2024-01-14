@@ -6,6 +6,9 @@ import Image from "next/image";
 import urlFor from "../../utils/urlFor";
 import Link from "next/link";
 import { useState } from "react";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import CloseIcon from "@mui/icons-material/Close";
 
 type GarmentGallery = {
   data: Image[];
@@ -17,9 +20,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "1px solid #000",
   boxShadow: 24,
   p: 4,
   minHeight: "90vh",
@@ -53,9 +55,9 @@ export default function GarmentGallery(props: GarmentGallery) {
               onClick={() => {
                 setModalImage(modalImage - 1);
               }}
-              className={styles.button}
+              className={styles.buttonBack}
             >
-              Previous
+              <ArrowBackIcon />
             </button>
           ) : null}
           {data.length > 0 && (
@@ -75,11 +77,14 @@ export default function GarmentGallery(props: GarmentGallery) {
               onClick={() => {
                 setModalImage(modalImage + 1);
               }}
-              className={styles.button}
+              className={styles.buttonForward}
             >
-              Next
+              <ArrowForwardIcon />
             </button>
           ) : null}{" "}
+          <button onClick={handleClose} className={styles.buttonClose}>
+            <CloseIcon />
+          </button>
         </Box>
       </Modal>
       {data.length > 0 && (
