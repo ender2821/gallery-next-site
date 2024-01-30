@@ -43,7 +43,7 @@ export default async function Products() {
 
   const pageData = (await client.fetch(pageDataQuery, {
     next: revalidate,
-  })) as Products;
+  })) as ProductsPage;
 
   return (
     <>

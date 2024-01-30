@@ -62,6 +62,14 @@ type Products = {
   mainProductButtonText: string,
 }
 
+type ProductsPage = {
+  productPageTitle: string,
+  mainProduct: Product,
+  galleryTitle: string,
+  galleryText: string,
+  mainProductButtonText: string,
+}
+
 type Product = {
   sold?: boolean;
   customOrder?: boolean;
