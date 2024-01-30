@@ -102,7 +102,7 @@ export default async function RootLayout({
               </footer>
             </div>
           </div>
-          <GoogleAnalytics />
+          {/* <GoogleAnalytics /> */}
         </body>
       </html>
     </>
