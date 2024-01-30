@@ -68,12 +68,12 @@ export default async function RootLayout({
   const year = new Date().getFullYear();
   return (
     <>
-      {/* <Head>
+      <Head>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:&display=optional"
         />
-      </Head> */}
+      </Head>
       <html lang="en">
         <body className={notoSans.className}>
           <div className={styles.container}>
@@ -102,7 +102,7 @@ export default async function RootLayout({
               </footer>
             </div>
           </div>
-          {/* <GoogleAnalytics /> */}
+          <GoogleAnalytics />
         </body>
       </html>
     </>
