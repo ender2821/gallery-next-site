@@ -32,12 +32,9 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+h1, h2, h3, h4, p {
+  color: $black;
 }
-
 
 // All Mui Component style overides
 .MuiImageList-root {
