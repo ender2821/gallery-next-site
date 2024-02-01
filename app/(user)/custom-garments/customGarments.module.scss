@@ -38,7 +38,9 @@
   }
 }
 
-
+.garmentsGalleryContain {
+  position: relative;
+}
 
 @media screen and (min-width: $size-tablet) {
   .container {

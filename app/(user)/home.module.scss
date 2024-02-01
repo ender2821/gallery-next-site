@@ -243,6 +243,10 @@
     }
   }
 
+  .galleryItems {
+    position: relative;
+  }
+
   // Start Card Styles
   .serviceCards {
     grid-template-columns: 1fr 1fr;

@@ -6,11 +6,13 @@ import { Noto_Serif_Display } from "next/font/google";
 import urlFor from "../utils/urlFor";
 import Button from "./components/Button";
 import PatchIllustration from "../assets/patchIllustration.svg";
-import Gallery from "./components/Gallery";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import DryCleaningIcon from "@mui/icons-material/DryCleaning";
 import Divider from "./components/Divider";
+import HomeProducts from "./HomeProducts";
+import { Suspense } from "react";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 export const dynamic = "force-dynamic";
 
@@ -33,15 +35,6 @@ const homeQuery = groq`
     homeAlterationsBackground,
     homeAlterationsButtonTitle,
     heroText,
-    productList[] {
-      product->{
-        sold,
-        cost,
-        image,
-        name,
-        slug,
-      }
-    },
   }
 `;
 
@@ -50,8 +43,6 @@ export default async function Home() {
   const data = (await client.fetch(homeQuery, {
     next: revalidate,
   })) as Home;
-
-  const updatedProductData = data?.productList.map((item) => item?.product);
 
   return (
     <main className={styles.main}>
@@ -118,9 +109,9 @@ export default async function Home() {
           />
         </div>
         <div className={styles.galleryItems}>
-          {data?.productList && (
-            <Gallery data={updatedProductData} columns={2} />
-          )}
+          <Suspense fallback={<LoadingSpinner />}>
+            <HomeProducts />
+          </Suspense>
         </div>
       </section>
       <Divider />

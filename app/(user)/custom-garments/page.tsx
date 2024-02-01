@@ -5,8 +5,10 @@ import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
 import CollectionsIcon from "@mui/icons-material/Collections";
-import GarmentGallery from "../components/GarmentsGallery";
 import CustomGarmentForm from "../components/CustomGarmentForm";
+import { Suspense } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
+import CustomGarmentsGallery from "./CustomGarmentsGallery";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +18,6 @@ const customGarmentsQuery = groq`
   *[_type == "customGarments"][0]{
     name,
     pageContent,
-    garmentImages
   }
 `;
 
@@ -49,14 +50,10 @@ export default async function CustomGarments() {
           <Divider />
           <CustomGarmentForm />
         </div>
-        <div>
-          {" "}
-          {customGarmentsData && (
-            <GarmentGallery
-              data={customGarmentsData?.garmentImages}
-              columns={3}
-            />
-          )}
+        <div className={styles.garmentsGalleryContain}>
+          <Suspense fallback={<LoadingSpinner />}>
+            <CustomGarmentsGallery />
+          </Suspense>
         </div>
       </section>
     </>

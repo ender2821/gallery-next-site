@@ -66,6 +66,11 @@
   grid-template-columns: 1fr;
 }
 
+.galleryItemsContain {
+  position: relative;
+  min-height: 100px;
+}
+
 .galleryText {
   padding: 0 2rem;
   margin-bottom: 2rem;

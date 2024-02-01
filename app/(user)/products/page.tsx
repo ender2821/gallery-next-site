@@ -9,6 +9,9 @@ import urlFor from "../../utils/urlFor";
 import { PortableText } from "@portabletext/react";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import Button from "../components/Button";
+import { Suspense } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
+import ProductsGallery from "./ProductsGallery";
 
 export const dynamic = "force-dynamic";
 
@@ -31,15 +34,8 @@ const pageDataQuery = groq`
   }
 `;
 
-const productsDataQuery = groq`
-  *[_type == "product" && customOrder == false] | order(sold asc)
-`;
-
 export default async function Products() {
   const revalidate = 60;
-  const productData = (await client.fetch(productsDataQuery, {
-    next: revalidate,
-  })) as Product[];
 
   const pageData = (await client.fetch(pageDataQuery, {
     next: revalidate,
@@ -103,7 +99,11 @@ export default async function Products() {
       </section>
       <Divider />
       <section className={styles.galleryItems}>
-        {productData && <Gallery data={productData} columns={3} />}
+        <div className={styles.galleryItemsContain}>
+          <Suspense fallback={<LoadingSpinner />}>
+            <ProductsGallery />
+          </Suspense>
+        </div>
         <div className={styles.galleryText}>
           {pageData?.galleryTitle && <h3>{pageData?.galleryTitle}</h3>}
           {pageData?.galleryText && <p>{pageData?.galleryText}</p>}
