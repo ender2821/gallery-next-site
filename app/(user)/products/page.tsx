@@ -3,7 +3,6 @@ import styles from "./products.module.scss";
 import { Noto_Serif_Display } from "next/font/google";
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
-import Gallery from "../components/Gallery";
 import Divider from "../components/Divider";
 import urlFor from "../../utils/urlFor";
 import { PortableText } from "@portabletext/react";

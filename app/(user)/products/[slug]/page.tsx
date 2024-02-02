@@ -4,11 +4,12 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import Divider from "../../components/Divider";
 import { PortableText } from "@portabletext/react";
-import Button from "../../components/Button";
 import ProductImageList from "../../components/ProductImageList";
 import BackButton from "../../components/BackButton";
 import PurchaseForm from "../../components/PurchaseForm";
 import CustomGarmentForm from "../../components/CustomGarmentForm";
+import { Suspense } from "react";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 export const dynamic = "force-dynamic";
 
@@ -21,12 +22,33 @@ type Props = {
 };
 
 const productQuery = groq`
-  *[_type == "product" && slug.current == $slug][0]
+  *[_type == "product" && slug.current == $slug][0]{
+    sold,
+    customOrder,
+    name,
+    slug,
+    productDescription,
+    cost,
+    purchaseInstructions,
+    orderInstructions,
+  }
+`;
+
+const productImageQuery = groq`
+  *[_type == "product" && slug.current == $slug][0]{
+    image,
+    productImages
+  }
 `;
 
 export default async function Product({ params: { slug } }: Props) {
   const revalidate = 60;
   const productData: Product = await client.fetch(productQuery, {
+    slug,
+    next: revalidate,
+  });
+
+  const productImageData: Product = await client.fetch(productImageQuery, {
     slug,
     next: revalidate,
   });
@@ -65,8 +87,10 @@ export default async function Product({ params: { slug } }: Props) {
             <PurchaseForm data={productData} />
           )}
         </div>
-        <div>
-          <ProductImageList data={productData} />
+        <div className={styles.productImageContain}>
+          <Suspense fallback={<LoadingSpinner />}>
+            <ProductImageList data={productImageData} />
+          </Suspense>
         </div>
       </section>
     </>

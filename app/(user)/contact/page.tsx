@@ -4,14 +4,15 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
-import Image from "next/image";
-import urlFor from "@/app/utils/urlFor";
 import CallIcon from "@mui/icons-material/Call";
 import ContactForm from "../components/ContactForm";
 import Link from "next/link";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Tiktok from "../../assets/tiktok.svg";
+import ContactImage from "./ContactImage";
+import { Suspense } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +22,6 @@ const contactQuery = groq`
   *[_type == "contact"][0]{
     name,
     pageContent,
-    image,
     tiktok,
     facebook,
     instagram
@@ -82,17 +82,9 @@ export default async function CustomGarments() {
           <ContactForm />
         </div>
         <div className={styles.imageContain}>
-          {contactData?.image && (
-            <Image
-              alt={contactData?.image.alt ? contactData?.image?.alt : ""}
-              src={urlFor(contactData?.image?.asset).url()}
-              sizes="40vw"
-              style={{
-                objectFit: "cover",
-              }}
-              fill
-            />
-          )}
+          <Suspense fallback={<LoadingSpinner />}>
+            <ContactImage />
+          </Suspense>
         </div>
       </section>
     </>

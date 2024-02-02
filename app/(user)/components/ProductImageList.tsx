@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./productImageList.module.scss";
 import urlFor from "../../utils/urlFor";
 import Image from "next/image";

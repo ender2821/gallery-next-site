@@ -5,9 +5,10 @@ import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
-import urlFor from "@/app/utils/urlFor";
-import Image from "next/image";
 import Schedule from "../components/Schedule";
+import { Suspense } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
+import AlterationsImage from "./AlterationsImage";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +18,6 @@ const alterationsQuery = groq`
   *[_type == "alterations"][0]{
     name,
     pageContent,
-    image
   }
 `;
 
@@ -54,19 +54,9 @@ export default async function Alterations() {
           />
         </div>
         <div className={styles.imageContain}>
-          {alterationsData?.image && (
-            <Image
-              alt={
-                alterationsData?.image.alt ? alterationsData?.image?.alt : ""
-              }
-              src={urlFor(alterationsData?.image?.asset).url()}
-              sizes="40vw"
-              style={{
-                objectFit: "cover",
-              }}
-              fill
-            />
-          )}
+          <Suspense fallback={<LoadingSpinner />}>
+            <AlterationsImage />
+          </Suspense>
         </div>
       </section>
     </>

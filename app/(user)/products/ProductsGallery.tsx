@@ -1,7 +1,6 @@
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import Gallery from "../components/Gallery";
-import { timeout } from "@/app/utils/helpers";
 
 export const dynamic = "force-dynamic";
 

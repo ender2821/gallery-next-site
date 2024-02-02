@@ -4,12 +4,11 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
-import { PortableTextBlock } from "@portabletext/types";
-
 import DryCleaningIcon from "@mui/icons-material/DryCleaning";
-import urlFor from "@/app/utils/urlFor";
-import Image from "next/image";
 import Schedule from "../components/Schedule";
+import { Suspense } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
+import SewingLessonsImage from "./SewingLessonsImage";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +18,6 @@ const sewingQuery = groq`
   *[_type == "sewing"][0]{
     name,
     pageContent,
-    image
   }
 `;
 
@@ -52,17 +50,9 @@ export default async function Alterations() {
           />
         </div>
         <div className={styles.imageContain}>
-          {sewingData?.image && (
-            <Image
-              alt={sewingData?.image.alt ? sewingData?.image?.alt : ""}
-              src={urlFor(sewingData?.image?.asset).url()}
-              sizes="40vw"
-              style={{
-                objectFit: "cover",
-              }}
-              fill
-            />
-          )}
+          <Suspense fallback={<LoadingSpinner />}>
+            <SewingLessonsImage />
+          </Suspense>
         </div>
       </section>
     </>
