@@ -24,12 +24,13 @@ export default defineType({
     }),
     defineField({
       name: "slug",
-      title: "Slug",
+      title: "Slug: (This is used as the url for the product page)",
       type: "slug",
       options: {
         source: "name",
         maxLength: 96
-      }
+      },
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "image",
