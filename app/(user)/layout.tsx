@@ -12,7 +12,7 @@ import GoogleAnalytics from "./components/GoogleAnalytics";
 const notoSans = Noto_Sans({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "He/Him LLC",
+  title: "He/Hem LLC",
   description:
     "Custom Garments, alterations, and sewing lessons at an affordable price",
   icons: [
