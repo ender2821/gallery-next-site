@@ -37,6 +37,7 @@ const homeQuery = groq`
     heroText,
   }
 `;
+// TODO: fix the way the fonts are being inserted
 
 export default async function Home() {
   const revalidate = 60;
