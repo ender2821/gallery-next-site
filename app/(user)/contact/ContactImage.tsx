@@ -21,7 +21,7 @@ export default async function ContactImage() {
     <>
       {contactImageData?.image?.asset && (
         <Image
-          alt={contactImageData?.image.alt ? contactImageData?.image?.alt : ""}
+          alt={contactImageData?.image?.alt || ""}
           src={urlFor(contactImageData?.image?.asset).url()}
           sizes="40vw"
           style={{

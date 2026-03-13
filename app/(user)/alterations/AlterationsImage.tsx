@@ -22,11 +22,7 @@ export default async function AlterationsImage() {
     <>
       {alterationsImageData?.image?.asset && (
         <Image
-          alt={
-            alterationsImageData?.image.alt
-              ? alterationsImageData?.image?.alt
-              : ""
-          }
+          alt={alterationsImageData?.image?.alt || ""}
           src={urlFor(alterationsImageData?.image?.asset).url()}
           sizes="40vw"
           style={{

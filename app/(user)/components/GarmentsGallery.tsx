@@ -62,7 +62,7 @@ export default function GarmentGallery(props: GarmentGallery) {
           ) : null}
           {data.length > 0 && (
             <Image
-              alt={data && data[modalImage]?.alt ? data[modalImage]?.alt : ""}
+              alt={data[modalImage]?.alt || ""}
               src={
                 data && data[modalImage]?.asset
                   ? urlFor(data[modalImage]?.asset).url()

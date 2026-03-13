@@ -31,7 +31,7 @@ export default function ProductImageList(props: Props) {
       <div className={styles.mainImage}>
         <Image
           src={mainImage?.image}
-          alt={mainImage?.alt ? mainImage?.alt : ""}
+          alt={mainImage?.alt || ""}
           sizes="(min-width: 50px) 650px"
           style={{
             objectFit: "cover",
@@ -55,7 +55,7 @@ export default function ProductImageList(props: Props) {
               >
                 <Image
                   src={item?.asset ? urlFor(item?.asset).url() : ""}
-                  alt={item?.alt ? item?.alt : ""}
+                  alt={item?.alt || ""}
                   style={{
                     objectFit: "cover",
                   }}

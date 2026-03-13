@@ -21,7 +21,7 @@ export default async function SewingLessonsImage() {
     <>
       {sewingImageData?.image?.asset && (
         <Image
-          alt={sewingImageData?.image.alt ? sewingImageData?.image?.alt : ""}
+          alt={sewingImageData?.image?.alt || ""}
           src={urlFor(sewingImageData?.image?.asset).url()}
           sizes="40vw"
           style={{
