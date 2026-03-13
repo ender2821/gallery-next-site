@@ -19,7 +19,7 @@ export default async function ContactImage() {
 
   return (
     <>
-      {contactImageData?.image && (
+      {contactImageData?.image?.asset && (
         <Image
           alt={contactImageData?.image.alt ? contactImageData?.image?.alt : ""}
           src={urlFor(contactImageData?.image?.asset).url()}

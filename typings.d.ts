@@ -9,49 +9,49 @@ type Global = {
 
 type Image = {
   _type?: string,
-  alt: string,
-  asset: Asset,
+  alt?: string,
+  asset?: Asset,
 }
 
 type BackgroundImage = {
   _type?: string,
-  asset: Asset,
+  asset?: Asset,
 }
 
 type Asset = {
-  _ref: string,
-  _type: string
+  _ref?: string,
+  _type?: string
 }
 
 type Home = {
-  homeAlterationsTitle: string,
-  homeLessonsBackground: BackgroundImage,
-  homeLessonsTitle: string, 
-  homeGalleryTitle: string, 
-  heroBackground: BackgroundImage,
-  homeAlterationsText: string,
-  heroImage: Image,
-  homeLessonsButtonTitle: string,
-  heroCta: string,
-  homeGalleryText: string,
-  homeLessonsText: string,
-  homeGalleryButtonTitle: string,
-  homeAlterationsBackground: BackgroundImage,
-  homeAlterationsButtonTitle: string,
-  heroText: string,
-  productList: HomeProduct[],
+  homeAlterationsTitle?: string,
+  homeLessonsBackground?: BackgroundImage,
+  homeLessonsTitle?: string, 
+  homeGalleryTitle?: string, 
+  heroBackground?: BackgroundImage,
+  homeAlterationsText?: string,
+  heroImage?: Image,
+  homeLessonsButtonTitle?: string,
+  heroCta?: string,
+  homeGalleryText?: string,
+  homeLessonsText?: string,
+  homeGalleryButtonTitle?: string,
+  homeAlterationsBackground?: BackgroundImage,
+  homeAlterationsButtonTitle?: string,
+  heroText?: string,
+  productList?: HomeProduct[],
 }
 
 type HomeProduct = {
-  product: HomeProductDetail
+  product?: HomeProductDetail
 }
 
 type HomeProductDetail = {
-  sold: boolean,
-  cost: number,
-  image: Image,
-  name: string,
-  slug: Slug,
+  sold?: boolean,
+  cost?: number,
+  image?: Image,
+  name?: string,
+  slug?: Slug,
 }
 
 type Products = {
@@ -63,18 +63,18 @@ type Products = {
 }
 
 type ProductsPage = {
-  productPageTitle: string,
-  mainProduct: Product,
-  galleryTitle: string,
-  galleryText: string,
-  mainProductButtonText: string,
+  productPageTitle?: string,
+  mainProduct?: Product,
+  galleryTitle?: string,
+  galleryText?: string,
+  mainProductButtonText?: string,
 }
 
 type Product = {
   sold?: boolean;
   customOrder?: boolean;
-  name: string;
-  slug: Slug;
+  name?: string;
+  slug?: Slug;
   image?: Image;
   productImages?: Image[];
   productDescription?: Block[];
@@ -84,31 +84,31 @@ type Product = {
 }
 
 type Slug = {
-  current: string;
+  current?: string;
 }
 
 type CustomGarments = {
-  name: string;
-  pageContent: Block[];
-  garmentImages: Image[];
+  name?: string;
+  pageContent?: Block[];
+  garmentImages?: Image[];
 }
 
 type Alterations = {
-  name: string;
-  pageContent: Block[];
-  image: Image;
+  name?: string;
+  pageContent?: Block[];
+  image?: Image;
 }
 
 type Sewing = {
-  name: string;
-  pageContent: Block[];
-  image: Image;
+  name?: string;
+  pageContent?: Block[];
+  image?: Image;
 }
 
 type Contact = {
-  name: string;
-  pageContent: block[];
-  image: Image;
+  name?: string;
+  pageContent?: Block[];
+  image?: Image;
   facebook?: string;
   instagram?: string;
   tiktok?: string;

@@ -88,9 +88,13 @@ function NavDrawer(props: Global) {
 
   return (
     <nav className={styles.nav}>
-      {logo && (
+      {logo?.asset && (
         <Link href="/" className={styles.logoContain}>
-          <Image src={urlFor(logo?.asset).url()} alt={logo?.alt} fill />
+          <Image
+            src={urlFor(logo?.asset).url()}
+            alt={logo?.alt || "Logo"}
+            fill
+          />
         </Link>
       )}
       <div className={styles.navDesktop}>

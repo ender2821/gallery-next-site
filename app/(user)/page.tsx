@@ -49,9 +49,9 @@ export default async function Home() {
       <section className={styles.hero}>
         <div className={styles.heroImages}>
           <div className={styles.heroImageContain}>
-            {data?.heroImage && (
+            {data?.heroImage?.asset && (
               <Image
-                alt={data?.heroImage?.alt}
+                alt={data?.heroImage?.alt || "Hero Image"}
                 src={urlFor(data?.heroImage?.asset).url()}
                 sizes="(min-width: 400px) 50vw 100vw"
                 style={{
@@ -62,7 +62,7 @@ export default async function Home() {
             )}
           </div>
           <div className={styles.heroBackgroundContain}>
-            {data?.heroBackground && (
+            {data?.heroBackground?.asset && (
               <Image
                 alt="Hero Background"
                 src={urlFor(data?.heroBackground?.asset).url()}
@@ -118,9 +118,9 @@ export default async function Home() {
       <section className={styles.serviceCards}>
         <div className={styles.card}>
           <div className={styles.cardBackgroundContain}>
-            {data?.homeAlterationsBackground && (
+            {data?.homeAlterationsBackground?.asset && (
               <Image
-                alt={data?.homeAlterationsTitle && data?.homeAlterationsTitle}
+                alt={data?.homeAlterationsTitle || "Alterations"}
                 src={urlFor(data?.homeAlterationsBackground?.asset).url()}
                 sizes="100vw"
                 style={{
@@ -151,9 +151,9 @@ export default async function Home() {
         </div>
         <div className={styles.card}>
           <div className={styles.cardBackgroundContain}>
-            {data?.homeLessonsBackground && (
+            {data?.homeLessonsBackground?.asset && (
               <Image
-                alt={data?.homeLessonsTitle && data?.homeLessonsTitle}
+                alt={data?.homeLessonsTitle || "Sewing Lessons"}
                 src={urlFor(data?.homeLessonsBackground?.asset).url()}
                 sizes="100vw"
                 style={{

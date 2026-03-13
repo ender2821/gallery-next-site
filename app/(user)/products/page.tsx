@@ -82,11 +82,11 @@ export default async function Products() {
             </div>
           </div>
         </div>
-        {pageData?.mainProduct && (
+        {pageData?.mainProduct?.image?.asset && (
           <div className={styles.showcaseImage}>
             <Image
               src={urlFor(pageData?.mainProduct?.image?.asset).url()}
-              alt={pageData?.mainProduct?.name}
+              alt={pageData?.mainProduct?.name || "Product Image"}
               sizes="(min-width: 400px) 50vw 100vw"
               style={{
                 objectFit: "cover",

@@ -16,28 +16,31 @@ export default function Gallery(props: Gallery) {
     <div className={styles.gallery}>
       {data.length > 0 && (
         <ImageList variant="masonry" cols={columns} gap={8}>
-          {data.map((item, i) => (
-            <Link
-              href={`/products/${item?.slug?.current}`}
-              key={item?.name + i}
-              className={styles.link}
-            >
-              <ImageListItem>
-                <img
-                  src={`${urlFor(
-                    item?.image?.asset
-                  ).url()}?w=400&fit=crop&auto=format`}
-                  alt={item?.image?.alt}
-                  loading="lazy"
-                />
-                <ImageListItemBar
-                  position="bottom"
-                  subtitle={item?.sold ? "Sold" : `$${item?.cost}`}
-                  title={item?.name}
-                />
-              </ImageListItem>
-            </Link>
-          ))}
+          {data.map(
+            (item, i) =>
+              item?.image?.asset && (
+                <Link
+                  href={`/products/${item?.slug?.current}`}
+                  key={item?.image?.asset._ref || i}
+                  className={styles.link}
+                >
+                  <ImageListItem>
+                    <img
+                      src={`${urlFor(
+                        item?.image?.asset,
+                      ).url()}?w=400&fit=crop&auto=format`}
+                      alt={item?.image?.alt || "Product"}
+                      loading="lazy"
+                    />
+                    <ImageListItemBar
+                      position="bottom"
+                      subtitle={item?.sold ? "Sold" : `$${item?.cost}`}
+                      title={item?.name}
+                    />
+                  </ImageListItem>
+                </Link>
+              ),
+          )}
         </ImageList>
       )}
     </div>

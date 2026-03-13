@@ -24,7 +24,9 @@ export default async function HomeProducts() {
     next: revalidate,
   })) as Home;
 
-  const updatedProductData = data?.productList.map((item) => item?.product);
+  const updatedProductData = (data?.productList ?? [])
+    .filter((item) => item?.product)
+    .map((item) => item?.product) as Product[];
   return (
     <>
       {data?.productList && <Gallery data={updatedProductData} columns={2} />}

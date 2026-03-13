@@ -62,8 +62,12 @@ export default function GarmentGallery(props: GarmentGallery) {
           ) : null}
           {data.length > 0 && (
             <Image
-              alt={data ? data[modalImage]?.alt : ""}
-              src={data ? urlFor(data[modalImage]?.asset).url() : ""}
+              alt={data && data[modalImage]?.alt ? data[modalImage]?.alt : ""}
+              src={
+                data && data[modalImage]?.asset
+                  ? urlFor(data[modalImage]?.asset).url()
+                  : ""
+              }
               sizes="100vw"
               style={{
                 objectFit: "contain",
@@ -91,11 +95,14 @@ export default function GarmentGallery(props: GarmentGallery) {
         <ImageList variant="masonry" cols={columns} gap={8}>
           {data.map((item, i) => (
             <ImageListItem key={i}>
-              <img
+              <Image
                 src={`${urlFor(item?.asset).url()}?w=400&fit=crop&auto=format`}
-                alt={item?.alt}
+                alt={item?.alt || ""}
                 loading="lazy"
                 onClick={() => handleOpen(i)}
+                width={400}
+                height={300}
+                style={{ cursor: "pointer" }}
               />
             </ImageListItem>
           ))}

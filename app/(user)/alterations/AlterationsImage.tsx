@@ -15,12 +15,12 @@ export default async function AlterationsImage() {
     alterationsImageQuery,
     {
       next: revalidate,
-    }
+    },
   );
 
   return (
     <>
-      {alterationsImageData?.image && (
+      {alterationsImageData?.image?.asset && (
         <Image
           alt={
             alterationsImageData?.image.alt

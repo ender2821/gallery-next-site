@@ -22,7 +22,7 @@ export default function ProductImageList(props: Props) {
 
   const imageData = buildArr(data).flat();
   const [mainImage, setMainImage] = useState({
-    image: urlFor(imageData[0]?.asset).url(),
+    image: imageData[0]?.asset ? urlFor(imageData[0]?.asset).url() : "",
     alt: imageData[0]?.alt,
   });
 
@@ -46,7 +46,7 @@ export default function ProductImageList(props: Props) {
               <button
                 onClick={() =>
                   setMainImage({
-                    image: urlFor(item?.asset).url(),
+                    image: item?.asset ? urlFor(item?.asset).url() : "",
                     alt: item?.alt,
                   })
                 }
@@ -54,7 +54,7 @@ export default function ProductImageList(props: Props) {
                 key={i}
               >
                 <Image
-                  src={urlFor(item?.asset).url()}
+                  src={item?.asset ? urlFor(item?.asset).url() : ""}
                   alt={item?.alt ? item?.alt : ""}
                   style={{
                     objectFit: "cover",

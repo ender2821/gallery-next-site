@@ -18,13 +18,16 @@ export default async function CustomGarmentsGallery() {
     customGarmentsGalleryQuery,
     {
       next: revalidate,
-    }
+    },
   );
 
   return (
     <>
       {customGarmentsData && (
-        <GarmentGallery data={customGarmentsData?.garmentImages} columns={3} />
+        <GarmentGallery
+          data={customGarmentsData?.garmentImages ?? []}
+          columns={3}
+        />
       )}
     </>
   );
