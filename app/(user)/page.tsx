@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./home.module.scss";
 import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from '@/sanity/lib/live'
 import { Noto_Serif_Display } from "next/font/google";
 import urlFor from "../utils/urlFor";
 import Button from "./components/Button";
@@ -40,20 +40,21 @@ const homeQuery = groq`
 // TODO: fix the way the fonts are being inserted
 
 export default async function Home() {
-  const revalidate = 60;
-  const data = (await client.fetch(homeQuery, {
-    next: revalidate,
-  })) as Home;
+  const { data } = await sanityFetch({
+    query: homeQuery,
+    params: {},
+  });
+  const dataTyped = data as Home;
 
-  return (
+    return (
     <main className={styles.main}>
       <section className={styles.hero}>
         <div className={styles.heroImages}>
           <div className={styles.heroImageContain}>
-            {data?.heroImage?.asset && (
+            {dataTyped?.heroImage?.asset && (
               <Image
-                alt={data?.heroImage?.alt || "Hero Image"}
-                src={urlFor(data?.heroImage?.asset).url()}
+                alt={dataTyped?.heroImage?.alt || "Hero Image"}
+                src={urlFor(dataTyped?.heroImage?.asset).url()}
                 sizes="(min-width: 400px) 50vw 100vw"
                 style={{
                   objectFit: "cover",
@@ -63,10 +64,10 @@ export default async function Home() {
             )}
           </div>
           <div className={styles.heroBackgroundContain}>
-            {data?.heroBackground?.asset && (
+            {dataTyped?.heroBackground?.asset && (
               <Image
                 alt="Hero Background"
-                src={urlFor(data?.heroBackground?.asset).url()}
+                src={urlFor(dataTyped?.heroBackground?.asset).url()}
                 sizes="100vw"
                 style={{
                   objectFit: "cover",
@@ -78,10 +79,10 @@ export default async function Home() {
           </div>
         </div>
         <div className={styles.heroContent}>
-          {data && <h1 className={notoSerif.className}>{data.heroText}</h1>}
+          {dataTyped && <h1 className={notoSerif.className}>{dataTyped.heroText}</h1>}
           <div>
             <Button
-              text={data?.heroCta ? data?.heroCta : "CTA Text"}
+              text={dataTyped?.heroCta ? dataTyped?.heroCta : "CTA Text"}
               link={"/custom-garments"}
             />
           </div>
@@ -97,13 +98,13 @@ export default async function Home() {
             <CollectionsIcon />
           </span>
           <h2 className={notoSerif.className}>
-            {data?.homeGalleryTitle && data?.homeGalleryTitle}
+            {dataTyped?.homeGalleryTitle && dataTyped?.homeGalleryTitle}
           </h2>
-          <p>{data?.homeGalleryText && data?.homeGalleryText}</p>
+          <p>{dataTyped?.homeGalleryText && dataTyped?.homeGalleryText}</p>
           <Button
             text={
-              data?.homeGalleryButtonTitle
-                ? data?.homeGalleryButtonTitle
+              dataTyped?.homeGalleryButtonTitle
+                ? dataTyped?.homeGalleryButtonTitle
                 : "Button Text"
             }
             link={"/products"}
@@ -119,10 +120,10 @@ export default async function Home() {
       <section className={styles.serviceCards}>
         <div className={styles.card}>
           <div className={styles.cardBackgroundContain}>
-            {data?.homeAlterationsBackground?.asset && (
+            {dataTyped?.homeAlterationsBackground?.asset && (
               <Image
-                alt={data?.homeAlterationsTitle || "Alterations"}
-                src={urlFor(data?.homeAlterationsBackground?.asset).url()}
+                alt={dataTyped?.homeAlterationsTitle || "Alterations"}
+                src={urlFor(dataTyped?.homeAlterationsBackground?.asset).url()}
                 sizes="100vw"
                 style={{
                   objectFit: "cover",
@@ -137,13 +138,13 @@ export default async function Home() {
               <ContentCutIcon />
             </span>
             <h2 className={notoSerif.className}>
-              {data?.homeAlterationsTitle && data?.homeAlterationsTitle}
+              {dataTyped?.homeAlterationsTitle && dataTyped?.homeAlterationsTitle}
             </h2>
-            <p>{data?.homeAlterationsText && data?.homeAlterationsText}</p>
+            <p>{dataTyped?.homeAlterationsText && dataTyped?.homeAlterationsText}</p>
             <Button
               text={
-                data?.homeAlterationsButtonTitle
-                  ? data?.homeAlterationsButtonTitle
+                dataTyped?.homeAlterationsButtonTitle
+                  ? dataTyped?.homeAlterationsButtonTitle
                   : "Button Text"
               }
               link={"/alterations"}
@@ -152,10 +153,10 @@ export default async function Home() {
         </div>
         <div className={styles.card}>
           <div className={styles.cardBackgroundContain}>
-            {data?.homeLessonsBackground?.asset && (
+            {dataTyped?.homeLessonsBackground?.asset && (
               <Image
-                alt={data?.homeLessonsTitle || "Sewing Lessons"}
-                src={urlFor(data?.homeLessonsBackground?.asset).url()}
+                alt={dataTyped?.homeLessonsTitle || "Sewing Lessons"}
+                src={urlFor(dataTyped?.homeLessonsBackground?.asset).url()}
                 sizes="100vw"
                 style={{
                   objectFit: "cover",
@@ -170,13 +171,13 @@ export default async function Home() {
               <DryCleaningIcon />
             </span>
             <h2 className={notoSerif.className}>
-              {data?.homeLessonsTitle && data?.homeLessonsTitle}
+              {dataTyped?.homeLessonsTitle && dataTyped?.homeLessonsTitle}
             </h2>
-            <p>{data?.homeLessonsText && data?.homeLessonsText}</p>
+            <p>{dataTyped?.homeLessonsText && dataTyped?.homeLessonsText}</p>
             <Button
               text={
-                data?.homeLessonsButtonTitle
-                  ? data?.homeLessonsButtonTitle
+                dataTyped?.homeLessonsButtonTitle
+                  ? dataTyped?.homeLessonsButtonTitle
                   : "Button Text"
               }
               link={"/sewing-lessons"}

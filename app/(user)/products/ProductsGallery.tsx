@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { groq } from "next-sanity";
 import Gallery from "../components/Gallery";
 
@@ -9,9 +9,6 @@ const productsDataQuery = groq`
 `;
 
 export default async function ProductsGallery() {
-  const revalidate = 60;
-  const productData = (await client.fetch(productsDataQuery, {
-    next: revalidate,
-  })) as Product[];
+  const { data: productData } = await sanityFetch({ query: productsDataQuery, params: {} });
   return <>{productData && <Gallery data={productData} columns={3} />}</>;
 }

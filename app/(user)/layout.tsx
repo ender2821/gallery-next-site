@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.scss";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { groq } from "next-sanity";
 import styles from "./home.module.scss";
 import NavDrawer from "./components/NavDrawer";
@@ -58,9 +58,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const revalidate = 60;
-  const data = await client.fetch(query, {
-    next: revalidate,
+  const { data } = await sanityFetch({
+    query,
+    params: {},
   });
   const { phone, logo, name, email, address, businessName } = data as Global;
 
@@ -95,6 +95,7 @@ export default async function RootLayout({
           </div>
         </div>
         <GoogleAnalytics />
+        <SanityLive />
       </body>
     </html>
   );

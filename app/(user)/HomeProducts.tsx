@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { groq } from "next-sanity";
 import Gallery from "./components/Gallery";
 
@@ -19,17 +19,15 @@ const homeProductsQuery = groq`
 `;
 
 export default async function HomeProducts() {
-  const revalidate = 60;
-  const data = (await client.fetch(homeProductsQuery, {
-    next: revalidate,
-  })) as Home;
+  const { data } = await sanityFetch({ query: homeProductsQuery, params: {} });
+  const dataTyped = data as Home;
 
-  const updatedProductData = (data?.productList ?? [])
+  const updatedProductData = (dataTyped?.productList ?? [])
     .filter((item) => item?.product)
     .map((item) => item?.product) as Product[];
   return (
     <>
-      {data?.productList && <Gallery data={updatedProductData} columns={2} />}
+      {dataTyped?.productList && <Gallery data={updatedProductData} columns={2} />}
     </>
   );
 }

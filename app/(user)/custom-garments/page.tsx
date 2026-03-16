@@ -1,7 +1,6 @@
 import styles from "./customGarments.module.scss";
 import { Noto_Serif_Display } from "next/font/google";
 import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
 import CollectionsIcon from "@mui/icons-material/Collections";
@@ -9,6 +8,7 @@ import CustomGarmentForm from "../components/CustomGarmentForm";
 import { Suspense } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import CustomGarmentsGallery from "./CustomGarmentsGallery";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const dynamic = "force-dynamic";
 
@@ -22,13 +22,10 @@ const customGarmentsQuery = groq`
 `;
 
 export default async function CustomGarments() {
-  const revalidate = 60;
-  const customGarmentsData: CustomGarments = await client.fetch(
-    customGarmentsQuery,
-    {
-      next: revalidate,
-    }
-  );
+  const { data: customGarmentsData } = await sanityFetch({
+    query: customGarmentsQuery,
+    params: {},
+  });
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { groq } from "next-sanity";
 import GarmentGallery from "../components/GarmentsGallery";
 
@@ -13,13 +13,10 @@ const customGarmentsGalleryQuery = groq`
 export default async function CustomGarmentsGallery() {
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  const revalidate = 60;
-  const customGarmentsData: CustomGarments = await client.fetch(
-    customGarmentsGalleryQuery,
-    {
-      next: revalidate,
-    },
-  );
+  const { data: customGarmentsData } = await sanityFetch({
+    query: customGarmentsGalleryQuery,
+    params: {},
+  });
 
   return (
     <>

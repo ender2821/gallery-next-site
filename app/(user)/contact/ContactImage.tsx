@@ -1,5 +1,5 @@
 import urlFor from "@/app/utils/urlFor";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { groq } from "next-sanity";
 import Image from "next/image";
 
@@ -12,10 +12,7 @@ const contactImageQuery = groq`
 `;
 
 export default async function ContactImage() {
-  const revalidate = 60;
-  const contactImageData: Contact = await client.fetch(contactImageQuery, {
-    next: revalidate,
-  });
+  const { data: contactImageData } = await sanityFetch({ query: contactImageQuery, params: {} });
 
   return (
     <>

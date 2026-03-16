@@ -1,7 +1,7 @@
 import styles from "./sewingLessons.module.scss";
 import { Noto_Serif_Display } from "next/font/google";
 import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
 import DryCleaningIcon from "@mui/icons-material/DryCleaning";
@@ -21,11 +21,8 @@ const sewingQuery = groq`
   }
 `;
 
-export default async function Alterations() {
-  const revalidate = 60;
-  const sewingData: Sewing = await client.fetch(sewingQuery, {
-    next: revalidate,
-  });
+export default async function SewingLessons() {
+  const { data: sewingData } = await sanityFetch({ query: sewingQuery, params: {} });
 
   return (
     <>

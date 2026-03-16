@@ -2,7 +2,6 @@ import Image from "next/image";
 import styles from "./products.module.scss";
 import { Noto_Serif_Display } from "next/font/google";
 import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import urlFor from "../../utils/urlFor";
 import { PortableText } from "@portabletext/react";
@@ -11,6 +10,7 @@ import Button from "../components/Button";
 import { Suspense } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ProductsGallery from "./ProductsGallery";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const dynamic = "force-dynamic";
 
@@ -34,11 +34,8 @@ const pageDataQuery = groq`
 `;
 
 export default async function Products() {
-  const revalidate = 60;
-
-  const pageData = (await client.fetch(pageDataQuery, {
-    next: revalidate,
-  })) as ProductsPage;
+  const { data } = await sanityFetch({ query: pageDataQuery, params: {} });
+  const pageData = data as ProductsPage;
 
   return (
     <>

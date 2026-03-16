@@ -1,7 +1,6 @@
 import styles from "./alterations.module.scss";
 import { Noto_Serif_Display } from "next/font/google";
 import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
@@ -9,6 +8,7 @@ import Schedule from "../components/Schedule";
 import { Suspense } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import AlterationsImage from "./AlterationsImage";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const dynamic = "force-dynamic";
 
@@ -22,10 +22,7 @@ const alterationsQuery = groq`
 `;
 
 export default async function Alterations() {
-  const revalidate = 60;
-  const alterationsData: Alterations = await client.fetch(alterationsQuery, {
-    next: revalidate,
-  });
+  const { data: alterationsData } = await sanityFetch({ query: alterationsQuery, params: {} });
 
   return (
     <>

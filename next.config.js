@@ -4,28 +4,33 @@ const nextConfig = {
     domains: ["cdn.sanity.io"]
   },
 
-  webpack(config) {
-    config.module.rules.push({
-        test: /\.svg$/,
-        use: {
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: [
+          {
             loader: '@svgr/webpack',
             options: {
-                svgoConfig: {
-                  plugins: [
-                    {
-                      name: 'preset-default',
-                      params: {
-                        overrides: {
-                          removeViewBox: false,
-                        },
+              svgoConfig: {
+                plugins: [
+                  {
+                    name: 'preset-default',
+                    params: {
+                      overrides: {
+                        // customize default plugin options
+                        removeViewBox: false,
                       },
                     },
-                  ],
-                },
+                  },
+                  'removeDimensions',
+                ],
+              },
             },
-        },
-    });
-      return config;
+          },
+        ],
+        as: '*.js',
+      },
+    },
   },
 }
 

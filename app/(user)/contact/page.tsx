@@ -1,7 +1,6 @@
 import styles from "./contact.module.scss";
 import { Noto_Serif_Display } from "next/font/google";
 import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/client";
 import Divider from "../components/Divider";
 import { PortableText } from "@portabletext/react";
 import CallIcon from "@mui/icons-material/Call";
@@ -13,6 +12,7 @@ import Tiktok from "../../assets/tiktok.svg";
 import ContactImage from "./ContactImage";
 import { Suspense } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const dynamic = "force-dynamic";
 
@@ -28,11 +28,8 @@ const contactQuery = groq`
   }
 `;
 
-export default async function CustomGarments() {
-  const revalidate = 60;
-  const contactData: Contact = await client.fetch(contactQuery, {
-    next: revalidate,
-  });
+export default async function Contact() {
+  const { data: contactData } = await sanityFetch({ query: contactQuery, params: {} });
 
   return (
     <>

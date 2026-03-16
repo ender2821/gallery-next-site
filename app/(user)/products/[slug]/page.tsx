@@ -1,7 +1,7 @@
 import styles from "./product.module.scss";
 import { Noto_Serif_Display } from "next/font/google";
 import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import Divider from "../../components/Divider";
 import { PortableText } from "@portabletext/react";
 import ProductImageList from "../../components/ProductImageList";
@@ -16,9 +16,9 @@ export const dynamic = "force-dynamic";
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 const productQuery = groq`
@@ -41,16 +41,16 @@ const productImageQuery = groq`
   }
 `;
 
-export default async function Product({ params: { slug } }: Props) {
-  const revalidate = 60;
-  const productData: Product = await client.fetch(productQuery, {
-    slug,
-    next: revalidate,
+export default async function Product({ params }: Props) {
+  const { slug } = await params;
+  const { data: productData } = await sanityFetch({
+    query: productQuery,
+    params: { slug },
   });
 
-  const productImageData: Product = await client.fetch(productImageQuery, {
-    slug,
-    next: revalidate,
+  const { data: productImageData } = await sanityFetch({
+    query: productImageQuery,
+    params: { slug },
   });
 
   return (
