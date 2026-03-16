@@ -107,6 +107,13 @@ function NavDrawer(props: Global) {
               onClick={toggleDrawer(anchor, true)}
               className={styles.hamburgerMenu}
               aria-label="menu"
+              sx={{
+                position: "absolute",
+                top: "1.8rem",
+                left: "50%",
+                transform: "translateX(-50%)",
+                display: { xs: "block", lg: "none" },
+              }}
             >
               <MenuRoundedIcon className={styles.icon} />
             </IconButton>
