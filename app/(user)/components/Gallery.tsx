@@ -36,6 +36,14 @@ export default function Gallery(props: Gallery) {
                       position="bottom"
                       subtitle={item?.sold ? "Sold" : `$${item?.cost}`}
                       title={item?.name}
+                      sx={{
+                        "& .MuiImageListItemBar-subtitle": {
+                          fontSize: "clamp(2.2rem, 2vw, 3.4rem)",
+                        },
+                        "& .MuiImageListItemBar-title": {
+                          fontSize: "1.6rem",
+                        },
+                      }}
                     />
                   </ImageListItem>
                 </Link>
